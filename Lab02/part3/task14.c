@@ -22,5 +22,10 @@ int main(int argc, char const *argv[]) {
         fscanf(file, "%s %lf", product, &price);
         printf("%s %.2lf\n", product, price);
     }
+
+    free(product);
+    free(filename);
+    fclose(file);
+    
     return 0;
 }

@@ -31,5 +31,10 @@ int main(int argc, char const *argv[]) {
     for (int i = 0; i < n; i++) {
         printf("%s %.2lf\n", arr_of_prod[i].name, arr_of_prod[i].price);
     }
+
+    free(filename);
+    free(arr_of_prod);
+    fclose(file);
+    
     return 0;
 }
