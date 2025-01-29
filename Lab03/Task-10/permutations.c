@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
+#include <sys/time.h>
 
 /*
 Find all permutations of a string.
@@ -41,7 +43,12 @@ void permute(char *a, int l, int r)
       swap((a + l), (a + i)); //backtrack
    }
 }
-
+double get_wall_seconds(){
+   struct timeval tv;
+   gettimeofday(&tv, NULL);
+   double seconds = tv.tv_sec + (double)tv.tv_usec/1000000;
+   return seconds;
+}
 
 int main(int argc, char const *argv[])
 {
@@ -50,11 +57,15 @@ int main(int argc, char const *argv[])
       printf("Usage: %s string\n", argv[0]);
       return -1;
    }
+
    char str[100];
    strcpy(str, argv[1]);
    printf("Permutations of %s are:\n", str);
    int n = strlen(str);
+   double start = get_wall_seconds();
    permute(str, 0, n - 1);
+   double end = get_wall_seconds();
+   printf("Time: %f\n", end - start);
    printf("In total %ld permutations\n", count);
    return 0;
 }

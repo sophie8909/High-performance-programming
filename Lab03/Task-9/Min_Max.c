@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
+#include <sys/time.h>
 
 double** allocate_matrix(int n);
 void deallocate_matrix(double** theMatrix, int n);
@@ -8,9 +9,11 @@ void fill_matrix(double** theMatrix, int n);
 void print_matrix(double** theMatrix, int n);
 double get_min_value(double** theMatrix, int n);
 double get_max_value(double** theMatrix, int n);
+double get_wall_seconds();
 
 int main()
 {
+  double start_time = get_wall_seconds();
   int n;
   printf("\nEnter the dimension for a square matrix:");
   scanf("%d",&n);
@@ -22,6 +25,10 @@ int main()
   //print_matrix(matrixA, n);
   printf("Min value: %14.9f  Max value: %14.9f\n", minValue, maxValue);
   deallocate_matrix(matrixA, n);
+  double** matrixB = allocate_matrix(n);
+  deallocate_matrix(matrixB,n);
+  double end_time = get_wall_seconds();
+  printf("Time: %f\n", end_time - start_time);
   return 0;
 }
 
@@ -87,3 +94,10 @@ double get_min_value(double** theMatrix, int n)
   return min;
 }
 
+
+double get_wall_seconds(){
+struct timeval tv;
+gettimeofday(&tv, NULL);
+double seconds = tv.tv_sec + (double)tv.tv_usec/1000000;
+return seconds;
+}
