@@ -1,0 +1,1789 @@
+desc: --time-unit=B --stacks=yes
+cmd: ./sort_test 20000
+time_unit: B
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=90800
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=1328
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=144296
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=1624
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=208336
+mem_heap_B=1024
+mem_heap_extra_B=8
+mem_stacks_B=1144
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=290112
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=480
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=354368
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=400
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=398232
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=440
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=478032
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=384
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=530304
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=416
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=576032
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=384
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=640432
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=384
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=712304
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=416
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=788368
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=400
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=876560
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=416
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=925568
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=400
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=979232
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=384
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=1039432
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=440
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=1102432
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=384
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=1167296
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=400
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=1237296
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=400
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=1310096
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=400
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=1386160
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=416
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=1468304
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=416
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=1554632
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=440
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=1642368
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=400
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=1734304
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=416
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=1783296
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=400
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=1835104
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=416
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=1888304
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=416
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=1941504
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=416
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=2001696
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=400
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=2064232
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=440
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=2128160
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=416
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=2192096
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=400
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=2256032
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=384
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=2320432
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=384
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=2389968
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=400
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=2461832
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=440
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=2532088
+mem_heap_B=81024
+mem_heap_extra_B=16
+mem_stacks_B=2248
+heap_tree=detailed
+n2: 81024 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n0: 80000 0x1091C9: main (main.c:34)
+ n1: 1024 0x48DB1A4: _IO_file_doallocate (filedoalloc.c:101)
+  n1: 1024 0x48EB513: _IO_doallocbuf (genops.c:347)
+   n1: 1024 0x48E8F7F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+    n1: 1024 0x48E9A9E: _IO_new_file_xsputn (fileops.c:1244)
+     n1: 1024 0x48E9A9E: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+      n1: 1024 0x48B6CB8: __printf_buffer_flush_to_file (printf_buffer_to_file.c:59)
+       n1: 1024 0x48B6CB8: __printf_buffer_to_file_done (printf_buffer_to_file.c:120)
+        n1: 1024 0x48C1732: __vfprintf_internal (vfprintf-internal.c:1545)
+         n1: 1024 0x498DA0C: __printf_chk (printf_chk.c:33)
+          n1: 1024 0x1091B5: printf (stdio2.h:86)
+           n0: 1024 0x1091B5: main (main.c:29)
+#-----------
+snapshot=39
+#-----------
+time=2575160
+mem_heap_B=121024
+mem_heap_extra_B=24
+mem_stacks_B=560
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=2655872
+mem_heap_B=201024
+mem_heap_extra_B=48
+mem_stacks_B=640
+heap_tree=detailed
+n4: 201024 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n0: 80000 0x1091C9: main (main.c:34)
+ n2: 60000 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n1: 20000 0x109759: merge_sort (sort_funcs.c:38)
+   n0: 20000 0x109303: main (main.c:46)
+ n2: 60000 0x109714: merge_sort (sort_funcs.c:31)
+  n0: 40000 0x109303: main (main.c:46)
+  n1: 20000 0x109759: merge_sort (sort_funcs.c:38)
+   n0: 20000 0x109303: main (main.c:46)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=41
+#-----------
+time=2705912
+mem_heap_B=241028
+mem_heap_extra_B=212
+mem_stacks_B=960
+heap_tree=detailed
+n4: 241028 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 81256 0x109714: merge_sort (sort_funcs.c:31)
+  n0: 40000 0x109303: main (main.c:46)
+  n2: 39376 0x109759: merge_sort (sort_funcs.c:38)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 19376 0x109759: merge_sort (sort_funcs.c:38)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 9376 0x109759: merge_sort (sort_funcs.c:38)
+     n0: 5000 0x109303: main (main.c:46)
+     n2: 4376 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 2500 0x109303: main (main.c:46)
+      n0: 1876 in 1 place, below massif's threshold (1.00%)
+  n0: 1880 in 1 place, below massif's threshold (1.00%)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 78748 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n2: 37500 0x109759: merge_sort (sort_funcs.c:38)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 17500 0x109759: merge_sort (sort_funcs.c:38)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 7500 0x109759: merge_sort (sort_funcs.c:38)
+     n0: 5000 0x109303: main (main.c:46)
+     n2: 2500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 2500 0x109303: main (main.c:46)
+      n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 1248 in 1 place, below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=42
+#-----------
+time=2763872
+mem_heap_B=253540
+mem_heap_extra_B=364
+mem_stacks_B=880
+heap_tree=detailed
+n4: 253540 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 95016 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 42500 0x109759: merge_sort (sort_funcs.c:38)
+   n0: 20000 0x109303: main (main.c:46)
+   n3: 20000 0x109759: merge_sort (sort_funcs.c:38)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 9376 0x109759: merge_sort (sort_funcs.c:38)
+     n0: 5000 0x109303: main (main.c:46)
+     n1: 4376 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 4376 in 2 places, all below massif's threshold (1.00%)
+    n0: 624 in 1 place, below massif's threshold (1.00%)
+   n0: 2500 in 1 place, below massif's threshold (1.00%)
+  n0: 40000 0x109303: main (main.c:46)
+  n2: 12516 0x109763: merge_sort (sort_funcs.c:39)
+   n2: 10008 0x109759: merge_sort (sort_funcs.c:38)
+    n2: 9380 0x109759: merge_sort (sort_funcs.c:38)
+     n0: 5000 0x109303: main (main.c:46)
+     n1: 4380 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 4380 in 2 places, all below massif's threshold (1.00%)
+    n0: 628 in 1 place, below massif's threshold (1.00%)
+   n0: 2508 in 1 place, below massif's threshold (1.00%)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 77500 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 32500 0x109759: merge_sort (sort_funcs.c:38)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 10000 0x109759: merge_sort (sort_funcs.c:38)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 2500 in 1 place, below massif's threshold (1.00%)
+  n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+   n2: 5000 0x109759: merge_sort (sort_funcs.c:38)
+    n2: 5000 0x109759: merge_sort (sort_funcs.c:38)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 1 place, below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=43
+#-----------
+time=2855416
+mem_heap_B=271056
+mem_heap_extra_B=568
+mem_stacks_B=720
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=2915056
+mem_heap_B=299192
+mem_heap_extra_B=840
+mem_stacks_B=1040
+heap_tree=detailed
+n4: 299192 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 138796 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 61876 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 27500 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 11876 0x109759: merge_sort (sort_funcs.c:38)
+     n0: 5000 0x109303: main (main.c:46)
+     n1: 5000 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5000 in 3 places, all below massif's threshold (1.00%)
+     n0: 1876 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 5624 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5000 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5000 in 3 places, all below massif's threshold (1.00%)
+     n0: 624 in 1 place, below massif's threshold (1.00%)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 14376 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 11876 0x109759: merge_sort (sort_funcs.c:38)
+     n0: 5000 0x109303: main (main.c:46)
+     n1: 5000 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5000 in 3 places, all below massif's threshold (1.00%)
+     n0: 1876 in 1 place, below massif's threshold (1.00%)
+    n0: 2500 in 1 place, below massif's threshold (1.00%)
+  n0: 40000 0x109303: main (main.c:46)
+  n2: 36920 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 27524 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 11888 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 5008 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5008 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 1880 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 5636 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5008 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5008 in 3 places, all below massif's threshold (1.00%)
+     n0: 628 in 1 place, below massif's threshold (1.00%)
+   n2: 9396 0x109763: merge_sort (sort_funcs.c:39)
+    n2: 6888 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 5008 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5008 in 3 places, all below massif's threshold (1.00%)
+     n0: 1880 in 1 place, below massif's threshold (1.00%)
+    n0: 2508 in 1 place, below massif's threshold (1.00%)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 79372 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 25624 0x109759: merge_sort (sort_funcs.c:38)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 5624 0x109763: merge_sort (sort_funcs.c:39)
+    n2: 5000 0x109759: merge_sort (sort_funcs.c:38)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 624 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+  n2: 13748 0x109763: merge_sort (sort_funcs.c:39)
+   n2: 12500 0x109759: merge_sort (sort_funcs.c:38)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 2500 in 2 places, all below massif's threshold (1.00%)
+   n0: 1248 in 1 place, below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=45
+#-----------
+time=2982544
+mem_heap_B=317956
+mem_heap_extra_B=1068
+mem_stacks_B=1040
+heap_tree=detailed
+n4: 317956 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 157560 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 69376 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 30000 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 12500 0x109759: merge_sort (sort_funcs.c:38)
+     n0: 5000 0x109303: main (main.c:46)
+     n1: 5000 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5000 in 3 places, all below massif's threshold (1.00%)
+     n0: 2500 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 7500 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5000 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5000 in 3 places, all below massif's threshold (1.00%)
+     n0: 2500 in 1 place, below massif's threshold (1.00%)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 19376 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 12500 0x109759: merge_sort (sort_funcs.c:38)
+     n0: 5000 0x109303: main (main.c:46)
+     n1: 5000 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5000 in 3 places, all below massif's threshold (1.00%)
+     n0: 2500 in 1 place, below massif's threshold (1.00%)
+    n2: 6876 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5000 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5000 in 3 places, all below massif's threshold (1.00%)
+     n0: 1876 in 1 place, below massif's threshold (1.00%)
+  n2: 48184 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 30032 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 12516 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 5008 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5008 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 7516 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5008 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5008 in 3 places, all below massif's threshold (1.00%)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+   n2: 18152 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 12516 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 5008 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5008 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+    n2: 5636 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5008 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5008 in 3 places, all below massif's threshold (1.00%)
+     n0: 628 in 1 place, below massif's threshold (1.00%)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 79372 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n2: 21248 0x109759: merge_sort (sort_funcs.c:38)
+   n0: 20000 0x109303: main (main.c:46)
+   n0: 1248 in 2 places, all below massif's threshold (1.00%)
+  n2: 18124 0x109763: merge_sort (sort_funcs.c:39)
+   n2: 10624 0x109759: merge_sort (sort_funcs.c:38)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 624 in 2 places, all below massif's threshold (1.00%)
+   n2: 7500 0x109763: merge_sort (sort_funcs.c:39)
+    n2: 5000 0x109759: merge_sort (sort_funcs.c:38)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 2500 in 1 place, below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=46
+#-----------
+time=3034232
+mem_heap_B=281088
+mem_heap_extra_B=1048
+mem_stacks_B=544
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=3074696
+mem_heap_B=321088
+mem_heap_extra_B=1064
+mem_stacks_B=640
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=3145232
+mem_heap_B=367344
+mem_heap_extra_B=1312
+mem_stacks_B=1040
+heap_tree=detailed
+n4: 367344 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 206948 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 91876 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 40000 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 16876 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n1: 5000 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5000 in 3 places, all below massif's threshold (1.00%)
+    n3: 13124 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5624 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 2500 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 31876 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 14376 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 2500 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 7500 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5000 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5000 in 3 places, all below massif's threshold (1.00%)
+     n0: 2500 in 1 place, below massif's threshold (1.00%)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 75072 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 34412 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 16896 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5008 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5008 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 7516 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5008 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5008 in 3 places, all below massif's threshold (1.00%)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+   n2: 20660 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 13144 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 5636 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+    n2: 7516 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5008 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5008 in 3 places, all below massif's threshold (1.00%)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 79372 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n2: 22500 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n0: 2500 in 2 places, all below massif's threshold (1.00%)
+  n3: 16872 0x109759: merge_sort (sort_funcs.c:38)
+   n2: 11248 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 1248 in 2 places, all below massif's threshold (1.00%)
+   n2: 5624 0x109759: merge_sort (sort_funcs.c:38)
+    n2: 5624 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 624 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=49
+#-----------
+time=3198872
+mem_heap_B=381108
+mem_heap_extra_B=1476
+mem_stacks_B=960
+heap_tree=detailed
+n4: 381108 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 221336 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 96876 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 41876 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 14376 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 2500 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 35000 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 16876 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n1: 5000 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5000 in 3 places, all below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 8124 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5624 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 2500 in 1 place, below massif's threshold (1.00%)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 84460 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 41920 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 14396 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n2: 22540 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 14396 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+    n2: 8144 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5636 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 78748 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 26248 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 6248 0x109759: merge_sort (sort_funcs.c:38)
+    n2: 6248 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 1248 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+  n2: 12500 0x109759: merge_sort (sort_funcs.c:38)
+   n2: 12500 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 2500 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=50
+#-----------
+time=3217608
+mem_heap_B=386112
+mem_heap_extra_B=1544
+mem_stacks_B=960
+heap_tree=detailed
+n4: 386112 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 226340 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 98752 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 41876 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 14376 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 2500 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 36876 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 9376 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 2500 in 1 place, below massif's threshold (1.00%)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 87588 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 41920 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 14396 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n2: 25668 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n2: 8144 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 5636 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 78748 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 27500 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 5000 0x109759: merge_sort (sort_funcs.c:38)
+    n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 2500 in 1 place, below massif's threshold (1.00%)
+  n2: 11248 0x109759: merge_sort (sort_funcs.c:38)
+   n2: 11248 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 1248 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=51
+#-----------
+time=3229808
+mem_heap_B=389864
+mem_heap_extra_B=1608
+mem_stacks_B=1040
+heap_tree=detailed
+n4: 389864 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 229468 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 100000 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 42500 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15000 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3124 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 37500 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 10000 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 3124 in 1 place, below massif's threshold (1.00%)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 89468 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 42548 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15024 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n2: 26920 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n2: 9396 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 2508 in 1 place, below massif's threshold (1.00%)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 79372 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 28748 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 5000 0x109759: merge_sort (sort_funcs.c:38)
+    n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 3748 in 1 place, below massif's threshold (1.00%)
+  n2: 10624 0x109759: merge_sort (sort_funcs.c:38)
+   n2: 10624 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 624 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=52
+#-----------
+time=3274240
+mem_heap_B=391120
+mem_heap_extra_B=1584
+mem_stacks_B=720
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=3279560
+mem_heap_B=396120
+mem_heap_extra_B=1600
+mem_stacks_B=800
+heap_tree=detailed
+n4: 396120 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 240096 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 100096 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 42548 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15024 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 37548 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n2: 10024 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 100000 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 42500 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15000 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3124 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 37500 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 10000 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 3124 in 1 place, below massif's threshold (1.00%)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 75000 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 30000 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 10000 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+  n2: 5000 0x109759: merge_sort (sort_funcs.c:38)
+   n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+    n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=54
+#-----------
+time=3284768
+mem_heap_B=401120
+mem_heap_extra_B=1616
+mem_stacks_B=800
+heap_tree=detailed
+n4: 401120 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 245096 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 105000 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 42500 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15000 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3124 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 42500 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15000 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3124 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 100096 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 42548 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15024 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 37548 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n2: 10024 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 75000 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 30000 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 10000 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+  n2: 5000 0x109759: merge_sort (sort_funcs.c:38)
+   n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+    n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=55
+#-----------
+time=3290304
+mem_heap_B=406120
+mem_heap_extra_B=1656
+mem_stacks_B=880
+heap_tree=detailed
+n4: 406120 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 247596 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 107500 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 45000 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 17500 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 42500 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15000 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3124 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 100096 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 42548 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15024 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 37548 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n2: 10024 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 77500 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 30000 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 10000 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+  n2: 7500 0x109759: merge_sort (sort_funcs.c:38)
+   n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+    n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 2500 in 2 places, all below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=56
+#-----------
+time=3298056
+mem_heap_B=410496
+mem_heap_extra_B=1720
+mem_stacks_B=1040
+heap_tree=detailed
+n4: 410496 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 250100 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 109376 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 46876 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 19376 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 6876 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 17500 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 42500 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17500 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15000 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3124 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 100724 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 43176 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 18152 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15024 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 37548 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 17524 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n2: 10024 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 79372 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 30624 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 10000 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 624 in 1 place, below massif's threshold (1.00%)
+  n2: 8748 0x109759: merge_sort (sort_funcs.c:38)
+   n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+    n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 3748 in 2 places, all below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=57
+#-----------
+time=3321040
+mem_heap_B=414876
+mem_heap_extra_B=1780
+mem_stacks_B=960
+heap_tree=detailed
+n4: 414876 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 255104 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 110000 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 46876 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 19376 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 6876 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 17500 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 43124 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 18124 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15000 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3124 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 105104 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 46928 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 19404 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 6888 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 17524 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 38176 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 18152 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n2: 10024 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 78748 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 32500 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 10000 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 2500 in 1 place, below massif's threshold (1.00%)
+  n2: 6248 0x109759: merge_sort (sort_funcs.c:38)
+   n2: 6248 0x109763: merge_sort (sort_funcs.c:39)
+    n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 1248 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=58
+#-----------
+time=3333880
+mem_heap_B=419256
+mem_heap_extra_B=1856
+mem_stacks_B=1040
+heap_tree=detailed
+n4: 419256 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 258860 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 111876 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 47500 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 19376 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 6876 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 18124 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 44376 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 19376 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 6876 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15000 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6876 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3124 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 106984 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 47556 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 19404 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 6888 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 18152 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 39428 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 19404 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 6888 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n2: 10024 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 6888 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 79372 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 33748 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n2: 11248 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n0: 1248 in 2 places, all below massif's threshold (1.00%)
+   n0: 2500 in 1 place, below massif's threshold (1.00%)
+  n2: 5624 0x109759: merge_sort (sort_funcs.c:38)
+   n2: 5624 0x109763: merge_sort (sort_funcs.c:39)
+    n2: 5624 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 624 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 2 places, all below massif's threshold (1.00%)
+   n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=59
+#-----------
+time=3361728
+mem_heap_B=423636
+mem_heap_extra_B=1884
+mem_stacks_B=880
+heap_tree=detailed
+n4: 423636 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 265112 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 112612 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 47556 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 19404 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 6888 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 18152 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 45056 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 19404 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 6888 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15652 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 112500 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 47500 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 19376 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 6876 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 18124 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 45000 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 19376 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 6876 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15624 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3124 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 77500 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 35000 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n3: 15000 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 2500 in 1 place, below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=60
+#-----------
+time=3367464
+mem_heap_B=428636
+mem_heap_extra_B=1932
+mem_stacks_B=960
+heap_tree=detailed
+n4: 428636 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 268864 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 116252 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 48752 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 19376 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 6876 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 19376 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 6876 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 47500 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 19376 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 6876 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 18124 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 112612 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 47556 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 19404 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 6888 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 18152 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 45056 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 19404 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 6888 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15652 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 78748 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 35000 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n3: 15000 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 3748 in 1 place, below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=61
+#-----------
+time=3382632
+mem_heap_B=433016
+mem_heap_extra_B=2016
+mem_stacks_B=1040
+heap_tree=detailed
+n4: 433016 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 272620 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 117500 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 49376 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 20000 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 7500 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 19376 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 6876 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 48124 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 20000 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 7500 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 18124 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 5624 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5624 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 115120 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 49436 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 20032 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 7516 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 19404 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 6888 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 45684 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 20032 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 7516 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 15652 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 3136 in 1 place, below massif's threshold (1.00%)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 79372 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 36872 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n3: 15624 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 5000 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 0 in 2 places, all below massif's threshold (1.00%)
+    n0: 624 in 1 place, below massif's threshold (1.00%)
+   n0: 1248 in 1 place, below massif's threshold (1.00%)
+  n0: 2500 in 1 place, below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=62
+#-----------
+time=3398400
+mem_heap_B=437392
+mem_heap_extra_B=2064
+mem_stacks_B=1040
+heap_tree=peak
+n4: 437392 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n3: 276996 0x109714: merge_sort (sort_funcs.c:31)
+  n3: 119376 0x109759: merge_sort (sort_funcs.c:38)
+   n3: 50000 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 20000 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 7500 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 20000 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 7500 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 49376 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 20000 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 7500 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 19376 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7500 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7500 in 3 places, all below massif's threshold (1.00%)
+     n1: 6876 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6876 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n3: 117620 0x109763: merge_sort (sort_funcs.c:39)
+   n3: 49436 0x109759: merge_sort (sort_funcs.c:38)
+    n3: 20032 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 7516 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 19404 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 6888 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 6888 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n3: 48184 0x109763: merge_sort (sort_funcs.c:39)
+    n3: 20032 0x109759: merge_sort (sort_funcs.c:38)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 7516 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n3: 18152 0x109763: merge_sort (sort_funcs.c:39)
+     n1: 7516 0x109759: merge_sort (sort_funcs.c:38)
+      n0: 7516 in 3 places, all below massif's threshold (1.00%)
+     n1: 5636 0x109763: merge_sort (sort_funcs.c:39)
+      n0: 5636 in 3 places, all below massif's threshold (1.00%)
+     n0: 5000 0x109303: main (main.c:46)
+    n0: 10000 0x109303: main (main.c:46)
+   n0: 20000 0x109303: main (main.c:46)
+  n0: 40000 0x109303: main (main.c:46)
+ n0: 80000 0x1091C9: main (main.c:34)
+ n3: 79372 0x109705: merge_sort (sort_funcs.c:30)
+  n0: 40000 0x109303: main (main.c:46)
+  n3: 37500 0x109763: merge_sort (sort_funcs.c:39)
+   n0: 20000 0x109303: main (main.c:46)
+   n3: 17500 0x109763: merge_sort (sort_funcs.c:39)
+    n0: 10000 0x109303: main (main.c:46)
+    n2: 7500 0x109763: merge_sort (sort_funcs.c:39)
+     n0: 5000 0x109303: main (main.c:46)
+     n0: 2500 in 2 places, all below massif's threshold (1.00%)
+    n0: 0 in 1 place, below massif's threshold (1.00%)
+   n0: 0 in 1 place, below massif's threshold (1.00%)
+  n0: 1872 in 1 place, below massif's threshold (1.00%)
+ n0: 1024 in 1 place, below massif's threshold (1.00%)
+#-----------
+snapshot=63
+#-----------
+time=3453056
+mem_heap_B=401152
+mem_heap_extra_B=2064
+mem_stacks_B=544
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=3493624
+mem_heap_B=361152
+mem_heap_extra_B=2056
+mem_stacks_B=608
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=3586240
+mem_heap_B=281152
+mem_heap_extra_B=2048
+mem_stacks_B=464
+heap_tree=empty

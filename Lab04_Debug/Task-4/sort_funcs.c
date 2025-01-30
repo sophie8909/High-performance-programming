@@ -19,11 +19,16 @@ void merge_sort(intType* list_to_sort, int N) {
     // Only one element, no sorting needed. Just return directly in this case.
     return;
   }
+  else if(N < 100)
+  {
+    bubble_sort(list_to_sort, N);
+    return;
+  }
   int n1 = N / 2;
   int n2 = N - n1;
   // Allocate new lists
-  intType* list1 = (intType*)malloc(N*sizeof(intType));
-  intType* list2 = list1 + n1;
+  intType* list1 = (intType*)malloc(n1*sizeof(intType));
+  intType* list2 = (intType*)malloc(n2*sizeof(intType));
   int i;
   for(i = 0; i < n1; i++)
     list1[i] = list_to_sort[i];

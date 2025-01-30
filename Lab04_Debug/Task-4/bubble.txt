@@ -1,0 +1,61 @@
+--------------------------------------------------------------------------------
+Command:            ./sort_test 20000
+Massif arguments:   --time-unit=B
+ms_print arguments: massif.out.2054
+--------------------------------------------------------------------------------
+
+
+    KB
+79.14^                                    ################################### 
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+     |                                    #                                   
+   0 +----------------------------------------------------------------------->KB
+     0                                                                   158.3
+
+Number of snapshots: 6
+ Detailed snapshots: [3 (peak)]
+
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  0              0                0                0             0            0
+  1          1,032            1,032            1,024             8            0
+  2         81,040           81,040           81,024            16            0
+  3         81,040           81,040           81,024            16            0
+99.98% (81,024B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->98.72% (80,000B) 0x1091C9: main (main.c:34)
+| 
+->01.26% (1,024B) 0x48DB1A4: _IO_file_doallocate (filedoalloc.c:101)
+  ->01.26% (1,024B) 0x48EB513: _IO_doallocbuf (genops.c:347)
+    ->01.26% (1,024B) 0x48E8F7F: _IO_file_overflow@@GLIBC_2.2.5 (fileops.c:745)
+      ->01.26% (1,024B) 0x48E9A9E: _IO_new_file_xsputn (fileops.c:1244)
+        ->01.26% (1,024B) 0x48E9A9E: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1197)
+          ->01.26% (1,024B) 0x48B6CB8: __printf_buffer_flush_to_file (printf_buffer_to_file.c:59)
+            ->01.26% (1,024B) 0x48B6CB8: __printf_buffer_to_file_done (printf_buffer_to_file.c:120)
+              ->01.26% (1,024B) 0x48C1732: __vfprintf_internal (vfprintf-internal.c:1545)
+                ->01.26% (1,024B) 0x498DA0C: __printf_chk (printf_chk.c:33)
+                  ->01.26% (1,024B) 0x1091B5: printf (stdio2.h:86)
+                    ->01.26% (1,024B) 0x1091B5: main (main.c:29)
+                      
+--------------------------------------------------------------------------------
+  n        time(B)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
+--------------------------------------------------------------------------------
+  4        161,048            1,032            1,024             8            0
+  5        162,080                0                0             0            0
