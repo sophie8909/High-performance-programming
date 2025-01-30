@@ -16,12 +16,12 @@ int main(){
   B* b = (B*)malloc(sizeof(B));
 
   a->x = 7;
-  for(int i = 0; i < 8; i++)
+  for(int i = 0; i < 9; i++)
     a->arr[i] = -1;
   printf("a->x = %d\n", a->x);
 
   b->x = 7;
-  for(int i = 0; i < 8; i++)
+  for(int i = 0; i < 9; i++)
     b->arr[i] = -1;
   printf("b->x = %d\n", b->x);
 

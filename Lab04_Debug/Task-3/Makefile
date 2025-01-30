@@ -1,6 +1,9 @@
 # 定義變數
 CC = gcc
-TARGET = merge_sort
+LD = gcc
+CFLAGS = -g -Wall
+LDFLAGS =
+TARGET = ex2
 SRC = $(TARGET).c
 OBJ = $(TARGET).o
 
@@ -8,10 +11,10 @@ OBJ = $(TARGET).o
 all: $(TARGET)
 
 $(OBJ): $(SRC)
-	$(CC) -c $(SRC)
+	$(CC) $(CFLAGS) -c $(SRC)
 
 $(TARGET): $(OBJ)
-	$(CC) $(OBJ) -o $(TARGET)
+	$(CC) $(LDFLAGS) $(OBJ) -o $(TARGET)
 
 clean:
 	rm -f $(OBJ) $(TARGET)
