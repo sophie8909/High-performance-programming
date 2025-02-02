@@ -15,13 +15,13 @@ void transform_std (float * dest,
     }
 }
 
-int NP = 2;
 
-void transform_opt (float * dest, 
-		    const float * src, 
-		    const float * params, 
+void transform_opt (float * __restrict dest, 
+		    const float * __restrict src, 
+		    const float * __restrict params, 
 		    int n,
 		    int np) {
+  int NP = 2;
   if(np != NP) {
     printf("ERROR: np must be same as NP.\n");
     return;

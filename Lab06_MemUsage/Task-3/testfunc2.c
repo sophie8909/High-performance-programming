@@ -1,8 +1,8 @@
 #include "testfunc2.h"
 
-void transform_opt (float * dest,
-		    const float * src,
-		    const float * params,
+void transform_opt (float * __restrict dest,
+		    const float * __restrict src,
+		    const float * __restrict params,
 		    int n) {
   int i;
   for (i=0; i<n; i++)

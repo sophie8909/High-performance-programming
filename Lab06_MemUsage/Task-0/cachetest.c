@@ -44,7 +44,7 @@ void ModifyLow(StructType* p, long int a) {
 }
 
 int main() {
-  int n = 200;
+  int n = 1;
   StructType* arrOfStructs;
   int nBytesToAllocate = n*sizeof(StructType);
   printf("nBytesToAllocate = %d\n", nBytesToAllocate);

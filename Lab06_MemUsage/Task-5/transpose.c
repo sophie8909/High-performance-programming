@@ -23,12 +23,12 @@ void do_transpose_optimized(double* B, const double* A, int N) {
       int jStart = block_j*blockSz;
       // Copy current block to subMat
       for(i = 0; i < blockSz; i++)
-	for(j = 0; j < blockSz; j++)
-	  subMat[j*blockSz+i] = A[(iStart+i)*N+(jStart+j)];
+        for(j = 0; j < blockSz; j++)
+          subMat[j*blockSz+i] = A[(iStart+i)*N+(jStart+j)];
       // Copy transposed block to matrixDst
       for(i = 0; i < blockSz; i++)
-	for(j = 0; j < blockSz; j++)
-	  B[(jStart+i)*N+(iStart+j)] = subMat[i*blockSz+j];
+        for(j = 0; j < blockSz; j++)
+          B[(jStart+i)*N+(iStart+j)] = subMat[i*blockSz+j];
     }
   }
 }
