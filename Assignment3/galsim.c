@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
+// using define instead of variable
 #define EPSILON 0.001
 
 #pragma region Particle
@@ -78,6 +79,7 @@ double F(int N, Particle** particles, int i, double G)
     {
         if (i != j) 
         {
+            // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
             double dx = particles[i]->x - particles[j]->x;
             double dy = particles[i]->y - particles[j]->y;
             /* r_ij: the vector pointing from particle j to particle i
@@ -88,10 +90,11 @@ double F(int N, Particle** particles, int i, double G)
              * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
              */
             double gamma = sqrt((dx * dx) + (dy * dy));
-            // r_ij^ = r_ij / gamma_ij
+            /* r_ij^ = r_ij / gamma_ij */ 
+            // reduce the redundant calculations of gamma + EPSILON
             double gamma_epsilln = gamma + EPSILON;
 
-
+            // instead of using pow
             F += particles[j]->mass  * r / (gamma_epsilln * gamma_epsilln * gamma_epsilln);
         }
     }

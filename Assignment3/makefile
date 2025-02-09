@@ -1,6 +1,6 @@
 CC = gcc
 LD = gcc
-CFLAGS = -O3 -Wall 
+CFLAGS = -O3 -Wall -funroll-loops
 LDFLAGS = 
 RM = /bin/rm -f
 OBJS = galsim.o
