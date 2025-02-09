@@ -44,17 +44,6 @@ void Print(Particle* p)
     printf("%lf\n%lf\n%lf\n%lf\n%lf\n%lf\n", p->x, p->y, p->mass, p->v_x, p->v_y, p->brightness);
 }
 
-// write to binary file
-void Write(FILE *file, Particle* p)
-{
-    fwrite(&p->x, sizeof(double), 1, file);
-    fwrite(&p->y, sizeof(double), 1, file);
-    fwrite(&p->mass, sizeof(double), 1, file);
-    fwrite(&p->v_x, sizeof(double), 1, file);
-    fwrite(&p->v_y, sizeof(double), 1, file);
-    fwrite(&p->brightness, sizeof(double), 1, file);
-
-}
 # pragma endregion
 
 #pragma region Movation
@@ -221,10 +210,7 @@ int main(int argc, char *argv[])
         printf("Error: cannot open file result.gal\n");
         return 1;
     }
-    for(int i = 0; i < N; ++i)
-    {
-        Write(output, particles[i]);
-    }
+    fwrite(particles, sizeof(Particle), 8, output);
 
     fclose(output);
 
