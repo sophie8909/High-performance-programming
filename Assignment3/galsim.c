@@ -155,29 +155,47 @@ int main(int argc, char *argv[])
              * epsilon = 10^-3
              */
             double F = 0.0;
-            for (int j = 0; j < N; j++) 
+            for (int j = 0; j < i; ++j) 
             {
-                if (i != j) 
-                {
-                    // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
-                    double dx = particles[i]->x - particles[j]->x;
-                    double dy = particles[i]->y - particles[j]->y;
-                    /* r_ij: the vector pointing from particle j to particle i
-                    * r_ij = (x_i − x_j)e_x + (y_i − y_j)e_y
-                    */ 
-                    double r = dx * particles[j]->e_x + dy * particles[j]->e_y;
-                    /* gamma_ij: the distance between particle i and j
-                    * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
-                    */
-                    double gamma = sqrt((dx * dx) + (dy * dy));
-                    /* r_ij^ = r_ij / gamma_ij */ 
-                    // reduce the redundant calculations of gamma + EPSILON
-                    double gamma_epsilln = gamma + EPSILON;
+                // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
+                double dx = particles[i]->x - particles[j]->x;
+                double dy = particles[i]->y - particles[j]->y;
+                /* r_ij: the vector pointing from particle j to particle i
+                * r_ij = (x_i − x_j)e_x + (y_i − y_j)e_y
+                */ 
+                double r = dx * particles[j]->e_x + dy * particles[j]->e_y;
+                /* gamma_ij: the distance between particle i and j
+                * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
+                */
+                double gamma = sqrt((dx * dx) + (dy * dy));
+                /* r_ij^ = r_ij / gamma_ij */ 
+                // reduce the redundant calculations of gamma + EPSILON
+                double gamma_epsilln = gamma + EPSILON;
 
-                    // instead of using pow
-                    F += particles[j]->mass  * r / (gamma_epsilln * gamma_epsilln * gamma_epsilln);
-                }
+                // instead of using pow
+                F += particles[j]->mass  * r / (gamma_epsilln * gamma_epsilln * gamma_epsilln);
             }
+            for (int j = i+1; j < N; ++j) 
+            {
+                // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
+                double dx = particles[i]->x - particles[j]->x;
+                double dy = particles[i]->y - particles[j]->y;
+                /* r_ij: the vector pointing from particle j to particle i
+                * r_ij = (x_i − x_j)e_x + (y_i − y_j)e_y
+                */ 
+                double r = dx * particles[j]->e_x + dy * particles[j]->e_y;
+                /* gamma_ij: the distance between particle i and j
+                * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
+                */
+                double gamma = sqrt((dx * dx) + (dy * dy));
+                /* r_ij^ = r_ij / gamma_ij */ 
+                // reduce the redundant calculations of gamma + EPSILON
+                double gamma_epsilln = gamma + EPSILON;
+
+                // instead of using pow
+                F += particles[j]->mass  * r / (gamma_epsilln * gamma_epsilln * gamma_epsilln);
+            }
+
             F *= -G * particles[i]->mass;
 
             /* update the position of particle i
