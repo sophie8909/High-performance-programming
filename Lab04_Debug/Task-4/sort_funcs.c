@@ -57,5 +57,6 @@ void merge_sort(intType* list_to_sort, int N) {
   while(i2 < n2)
     list_to_sort[i++] = list2[i2++];
   free(list1);
+  free(list2);
 }
 

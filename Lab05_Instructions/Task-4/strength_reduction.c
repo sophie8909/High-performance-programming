@@ -18,8 +18,8 @@ int main(int argc, char **argv)
 
       z = 0.33;
       y = 2*0.33;
-      x = y / tmp;
-      z = x / tmp;
+      x = y * tmp;
+      z = x * tmp;
    }
    printf("%d %d %d %d, %f %f %f\n", a, b, c, d, x, y, z);
    return 0;
