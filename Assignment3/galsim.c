@@ -210,7 +210,16 @@ int main(int argc, char *argv[])
         printf("Error: cannot open file result.gal\n");
         return 1;
     }
-    fwrite(particles, sizeof(Particle), 8, output);
+
+    for (int i = 0; i < N; ++i)
+    {
+        fwrite(&particles[i]->x, sizeof(double), 1, output);
+        fwrite(&particles[i]->y, sizeof(double), 1, output);
+        fwrite(&particles[i]->mass, sizeof(double), 1, output);
+        fwrite(&particles[i]->v_x, sizeof(double), 1, output);
+        fwrite(&particles[i]->v_y, sizeof(double), 1, output);
+        fwrite(&particles[i]->brightness, sizeof(double), 1, output);
+    }
 
     fclose(output);
 
