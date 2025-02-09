@@ -14,13 +14,10 @@
  * v_x: velocity x
  * v_y: velocity y
  * brightness: brightness of the particle
- * e_x: unit vector in x direction
- * e_y: unit vector in y direction
  */
 typedef struct 
 {
     double x, y, mass, v_x, v_y, brightness;
-    double e_x, e_y;
 } Particle;
 
 
@@ -33,8 +30,6 @@ Particle* Create(double x, double y, double mass, double v_x, double v_y, double
     p->v_x = v_x;
     p->v_y = v_y;
     p->brightness = brightness;
-    p->e_x = 0.0;
-    p->e_y = 0.0;
     return p;
 }
 
@@ -166,7 +161,7 @@ int main(int argc, char *argv[])
                 /* r_ij: the vector pointing from particle j to particle i
                 * r_ij = (x_i − x_j)e_x + (y_i − y_j)e_y
                 */ 
-                double r = dx * particles[j]->e_x + dy * particles[j]->e_y;
+                double r = dx + dy;
                 /* gamma_ij: the distance between particle i and j
                 * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
                 */
@@ -186,7 +181,7 @@ int main(int argc, char *argv[])
                 /* r_ij: the vector pointing from particle j to particle i
                 * r_ij = (x_i − x_j)e_x + (y_i − y_j)e_y
                 */ 
-                double r = dx * particles[j]->e_x + dy * particles[j]->e_y;
+                double r = dx + dy;
                 /* gamma_ij: the distance between particle i and j
                 * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
                 */
@@ -227,7 +222,9 @@ int main(int argc, char *argv[])
         return 1;
     }
     for(int i = 0; i < N; ++i)
+    {
         Write(output, particles[i]);
+    }
 
     fclose(output);
 
