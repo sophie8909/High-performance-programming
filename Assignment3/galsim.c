@@ -129,23 +129,26 @@ int main(int argc, char *argv[])
     }
 
     Particle** particles = (Particle**)malloc(N * sizeof(Particle*));
-    for (int i = 0; i < N; i++) 
+    int i = 0;
+    do
     {
         double data[6];
         size_t read_count = fread(data, sizeof(double), 6, file);
         // printf("Read: %lf %lf %lf %lf %lf %lf\n", data[0], data[1], data[2], data[3], data[4], data[5]);
         particles[i] = Create(data[0], data[1], data[2], data[3], data[4], data[5]);
         // Print(particles[i]);
-    }
-
+        ++i;
+    } while (i < N);
     fclose(file);
 #pragma endregion
 
     double G = 100.0 / N;
-    for (int t = 0; t < nsteps; ++t)
+    int t = 0;
+    do
     {
         // update the position of each particle
-        for (int i = 0; i < N; i++) 
+        i = 0;
+        do
         {
             /* calculate the force exerted on particle i by other N-1 particles */ 
             
@@ -210,9 +213,11 @@ int main(int argc, char *argv[])
             double a_y = F / particles[i]->mass;
             particles[i]->v_y += a_y * delta_t;
             particles[i]->y += particles[i]->v_y * delta_t;
-
-        }
-    }
+            ++i;
+        } while (i < N);
+        ++t;
+    } while (t < nsteps);
+    
 
     // output result.gal as binary file format
     FILE *output = fopen("result.gal", "wb");
