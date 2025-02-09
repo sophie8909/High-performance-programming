@@ -33,11 +33,6 @@ Particle* Create(double x, double y, double mass, double v_x, double v_y, double
     return p;
 }
 
-void Destroy(Particle* p) 
-{
-    free(p);
-}
-
 // print to terminal
 void Print(Particle* p) 
 {
@@ -225,10 +220,13 @@ int main(int argc, char *argv[])
 
 
 #pragma region FreeMemory
-    for (int i = 0; i < N; i++) 
+    i = 0;
+    do
     {
-        Destroy(particles[i]);
-    }
+        free(particles[i]);
+        ++i;
+    } while(i < N);
+    
     free(particles);
 #pragma endregion
 
