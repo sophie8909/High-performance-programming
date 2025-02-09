@@ -63,44 +63,39 @@ void Write(FILE *file, Particle* p)
 # pragma endregion
 
 #pragma region Movation
-/* Calculate the force exerted on particle i by other N-1 particles
+/* (*Del - directly calculate in main) Calculate the force exerted on particle i by other N-1 particles
  * N: number of particles
  * particles: array of pointers to particles
  * i: index of the particle
  * G: gravitational constant
  */ 
-double F(int N, Particle** particles, int i, double G) 
-{
-    /* F_i = -G * m_i * Σ m_j / (r_ij+epsilon)^3 * r_ij^
-     * epsilon = 10^-3
-    */
-    double F = 0.0;
-    for (int j = 0; j < N; j++) 
-    {
-        if (i != j) 
-        {
-            // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
-            double dx = particles[i]->x - particles[j]->x;
-            double dy = particles[i]->y - particles[j]->y;
-            /* r_ij: the vector pointing from particle j to particle i
-             * r_ij = (x_i − x_j)e_x + (y_i − y_j)e_y
-             */ 
-            double r = dx * particles[j]->e_x + dy * particles[j]->e_y;
-            /* gamma_ij: the distance between particle i and j
-             * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
-             */
-            double gamma = sqrt((dx * dx) + (dy * dy));
-            /* r_ij^ = r_ij / gamma_ij */ 
-            // reduce the redundant calculations of gamma + EPSILON
-            double gamma_epsilln = gamma + EPSILON;
-
-            // instead of using pow
-            F += particles[j]->mass  * r / (gamma_epsilln * gamma_epsilln * gamma_epsilln);
-        }
-    }
-    return -G * particles[i]->mass * F;
-
-}
+// double F(int N, Particle** particles, int i, double G) 
+// {
+//     /* F_i = -G * m_i * Σ m_j / (r_ij+epsilon)^3 * r_ij^
+//      * epsilon = 10^-3
+//     */
+//     double F = 0.0;
+//     for (int j = 0; j < N; j++) 
+//     {
+//         if (i != j) 
+//         {
+//             double dx = particles[i]->x - particles[j]->x;
+//             double dy = particles[i]->y - particles[j]->y;
+//             /* r_ij: the vector pointing from particle j to particle i
+//              * r_ij = (x_i − x_j)e_x + (y_i − y_j)e_y
+//              */ 
+//             double r = dx * particles[j]->e_x + dy * particles[j]->e_y;
+//             /* gamma_ij: the distance between particle i and j
+//              * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
+//              */
+//             double gamma = sqrt((dx * dx) + (dy * dy));
+//             // r_ij^ = r_ij / gamma_ij
+//             double gamma_epsilln = gamma + EPSILON;
+//             F += particles[j]->mass  * r / (gamma_epsilln * gamma_epsilln * gamma_epsilln);
+//         }
+//     }
+//     return -G * particles[i]->mass * F;
+// }
 
 #pragma endregion
 
@@ -152,20 +147,52 @@ int main(int argc, char *argv[])
         // update the position of each particle
         for (int i = 0; i < N; i++) 
         {
-            // calculate the force exerted on particle i by other N-1 particles
-            double F_i = F(N, particles, i, G);
+            /* calculate the force exerted on particle i by other N-1 particles */ 
+            
+            // double F_i = F(N, particles, i, G);
+            // 
+            /* F_i = -G * m_i * Σ m_j / (r_ij+epsilon)^3 * r_ij^
+             * epsilon = 10^-3
+             */
+            double F = 0.0;
+            for (int j = 0; j < N; j++) 
+            {
+                if (i != j) 
+                {
+                    // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
+                    double dx = particles[i]->x - particles[j]->x;
+                    double dy = particles[i]->y - particles[j]->y;
+                    /* r_ij: the vector pointing from particle j to particle i
+                    * r_ij = (x_i − x_j)e_x + (y_i − y_j)e_y
+                    */ 
+                    double r = dx * particles[j]->e_x + dy * particles[j]->e_y;
+                    /* gamma_ij: the distance between particle i and j
+                    * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
+                    */
+                    double gamma = sqrt((dx * dx) + (dy * dy));
+                    /* r_ij^ = r_ij / gamma_ij */ 
+                    // reduce the redundant calculations of gamma + EPSILON
+                    double gamma_epsilln = gamma + EPSILON;
+
+                    // instead of using pow
+                    F += particles[j]->mass  * r / (gamma_epsilln * gamma_epsilln * gamma_epsilln);
+                }
+            }
+            F *= -G * particles[i]->mass;
+
             /* update the position of particle i
              * a_i^n = F_i^n / m_i
              * u_i^n+1 = u_i^n + a_i^n * delta_t
              * x_i^n+1 = x_i^n + u_i^n+1 * delta_t
              */ 
-            double a_x = F_i / particles[i]->mass;
+            double a_x = F / particles[i]->mass;
             particles[i]->v_x += a_x * delta_t;
             particles[i]->x += particles[i]->v_x * delta_t;
 
-            double a_y = F_i / particles[i]->mass;
+            double a_y = F / particles[i]->mass;
             particles[i]->v_y += a_y * delta_t;
             particles[i]->y += particles[i]->v_y * delta_t;
+
         }
     }
 
