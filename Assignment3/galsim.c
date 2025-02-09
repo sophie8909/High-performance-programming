@@ -143,8 +143,6 @@ int main(int argc, char *argv[])
     fclose(file);
 #pragma endregion
 
-    // L x W dimensionless domain
-    double L = 1.0, W = 1.0;
     double G = 100.0 / N;
     for (int t = 0; t < nsteps; ++t)
     {

@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -O2 -std=c11
-TARGET = compare_gal_files
+TARGET = compare_gal_files 
 SRC = compare_gal_files.c
 OBJ = $(SRC:.c=.o)
 
