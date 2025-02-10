@@ -6,7 +6,7 @@ COMP_EXEC="./compare_gal_files/compare_gal_files"
 
 # Define input parameters
 STEPS=200
-EPSILON=0.00001
+DELTA_T=0.00001
 MODE=0
 
 # Define test cases
@@ -31,7 +31,7 @@ for CASE in "${TEST_CASES[@]}"; do
     N=$(echo "$CASE" | grep -o '[0-9]\+')
 
     echo "Running simulation for $CASE (N=$N)..."
-    time $SIM_EXEC $N $INPUT_FILE $STEPS $EPSILON $MODE
+    time $SIM_EXEC $N $INPUT_FILE $STEPS $DELTA_T $MODE
 
     echo "Comparing result with reference file..."
     $COMP_EXEC $N $OUTPUT_DIR $REF_FILE

@@ -20,18 +20,20 @@ typedef struct
     double x, y, mass, v_x, v_y, brightness;
 } Particle;
 
-
-Particle* Create(double x, double y, double mass, double v_x, double v_y, double brightness) 
-{
-    Particle* p = (Particle*)malloc(sizeof(Particle));
-    p->x = x;
-    p->y = y;
-    p->mass = mass;
-    p->v_x = v_x;
-    p->v_y = v_y;
-    p->brightness = brightness;
-    return p;
-}
+/* (*Del) Create new particle
+ *
+ */
+// Particle* Create(double x, double y, double mass, double v_x, double v_y, double brightness) 
+// {
+//     Particle* p = (Particle*)malloc(sizeof(Particle));
+//     p->x = x;
+//     p->y = y;
+//     p->mass = mass;
+//     p->v_x = v_x;
+//     p->v_y = v_y;
+//     p->brightness = brightness;
+//     return p;
+// }
 
 // print to terminal
 void Print(Particle* p) 
@@ -114,7 +116,14 @@ int main(int argc, char *argv[])
         double data[6];
         size_t read_count = fread(data, sizeof(double), 6, file);
         // printf("Read: %lf %lf %lf %lf %lf %lf\n", data[0], data[1], data[2], data[3], data[4], data[5]);
-        particles[i] = Create(data[0], data[1], data[2], data[3], data[4], data[5]);
+        // particles[i] = Create(data[0], data[1], data[2], data[3], data[4], data[5]);
+        particles[i] = (Particle*)malloc(sizeof(Particle));
+        particles[i]->x = data[0];
+        particles[i]->y = data[1];
+        particles[i]->mass = data[2];
+        particles[i]->v_x = data[3];
+        particles[i]->v_y = data[4];
+        particles[i]->brightness = data[5];
         // Print(particles[i]);
         ++i;
     } while (i < N);
@@ -136,64 +145,54 @@ int main(int argc, char *argv[])
             /* F_i = -G * m_i * Σ m_j / (r_ij+epsilon)^3 * r_ij^
              * epsilon = 10^-3
              */
-            double F = 0.0;
-            for (int j = 0; j < i; ++j) 
+            double F_x = 0.0;
+            double F_y = 0.0;
+            
+            for (int j = 0; j < N; ++j) 
             {
-                // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
-                double dx = particles[i]->x - particles[j]->x;
-                double dy = particles[i]->y - particles[j]->y;
-                /* r_ij: the vector pointing from particle j to particle i
-                * r_ij = (x_i − x_j)e_x + (y_i − y_j)e_y
-                */ 
-                double r = dx + dy;
-                /* gamma_ij: the distance between particle i and j
-                * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
-                */
-                double gamma = sqrt((dx * dx) + (dy * dy));
-                /* r_ij^ = r_ij / gamma_ij */ 
-                // reduce the redundant calculations of gamma + EPSILON
-                double gamma_epsilln = gamma + EPSILON;
+                if (i != j)
+                {
+                    // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
+                    double dx = particles[i]->x - particles[j]->x;
+                    double dy = particles[i]->y - particles[j]->y;
 
-                // instead of using pow
-                F += particles[j]->mass  * r / (gamma_epsilln * gamma_epsilln * gamma_epsilln);
-            }
-            for (int j = i+1; j < N; ++j) 
-            {
-                // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
-                double dx = particles[i]->x - particles[j]->x;
-                double dy = particles[i]->y - particles[j]->y;
-                /* r_ij: the vector pointing from particle j to particle i
-                * r_ij = (x_i − x_j)e_x + (y_i − y_j)e_y
-                */ 
-                double r = dx + dy;
-                /* gamma_ij: the distance between particle i and j
-                * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
-                */
-                double gamma = sqrt((dx * dx) + (dy * dy));
-                /* r_ij^ = r_ij / gamma_ij */ 
-                // reduce the redundant calculations of gamma + EPSILON
-                double gamma_epsilln = gamma + EPSILON;
+                    /* r_ij: the distance between particle i and j
+                    * r_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
+                    *reduce the redundant calculations of r + EPSILON
+                    */
+                    double r = sqrt((dx * dx) + (dy * dy)) + EPSILON;
 
-                // instead of using pow
-                F += particles[j]->mass  * r / (gamma_epsilln * gamma_epsilln * gamma_epsilln);
+                    // instead of using pow
+                    double f = particles[j]->mass / (r * r * r);
+
+                    F_x += f * dx;
+                    F_y += f * dy;
+                }
+                
             }
 
-            F *= -G * particles[i]->mass;
 
             /* update the position of particle i
              * a_i^n = F_i^n / m_i
              * u_i^n+1 = u_i^n + a_i^n * delta_t
              * x_i^n+1 = x_i^n + u_i^n+1 * delta_t
              */ 
-            double a_x = F / particles[i]->mass;
-            particles[i]->v_x += a_x * delta_t;
-            particles[i]->x += particles[i]->v_x * delta_t;
+            F_x *= - G * particles[i]->mass;
+            F_y *= - G * particles[i]->mass;
 
-            double a_y = F / particles[i]->mass;
+            double a_x = F_x / particles[i]->mass;
+            double a_y = F_y / particles[i]->mass;
+            particles[i]->v_x += a_x * delta_t;
             particles[i]->v_y += a_y * delta_t;
-            particles[i]->y += particles[i]->v_y * delta_t;
             ++i;
         } while (i < N);
+        i = 0;
+        do 
+        {
+            particles[i]->x += particles[i]->v_x * delta_t;
+            particles[i]->y += particles[i]->v_y * delta_t;
+            ++i;
+        } while(i < N);
         ++t;
     } while (t < nsteps);
     
@@ -226,7 +225,7 @@ int main(int argc, char *argv[])
         free(particles[i]);
         ++i;
     } while(i < N);
-    
+
     free(particles);
 #pragma endregion
 
