@@ -132,9 +132,9 @@ int main(int argc, char *argv[])
 
     double G = 100.0 / N;
     int t = 0;
+    
     do
     {
-        // update the position of each particle
         i = 0;
         do
         {
@@ -148,29 +148,43 @@ int main(int argc, char *argv[])
             double F_x = 0.0;
             double F_y = 0.0;
             
-            for (int j = 0; j < N; ++j) 
+            for (int j = 0; j < i; ++j) 
             {
-                if (i != j)
-                {
-                    // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
-                    double dx = particles[i]->x - particles[j]->x;
-                    double dy = particles[i]->y - particles[j]->y;
+                // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
+                double dx = particles[i]->x - particles[j]->x;
+                double dy = particles[i]->y - particles[j]->y;
 
-                    /* r_ij: the distance between particle i and j
-                    * r_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
-                    *reduce the redundant calculations of r + EPSILON
-                    */
-                    double r = sqrt((dx * dx) + (dy * dy)) + EPSILON;
+                /* r_ij: the distance between particle i and j
+                * r_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
+                *reduce the redundant calculations of r + EPSILON
+                */
+                double r = sqrt((dx * dx) + (dy * dy)) + EPSILON;
 
-                    // instead of using pow
-                    double f = particles[j]->mass / (r * r * r);
+                // instead of using pow
+                double f = particles[j]->mass / (r * r * r);
 
-                    F_x += f * dx;
-                    F_y += f * dy;
-                }
-                
+                F_x += f * dx;
+                F_y += f * dy;
             }
 
+            for (int j = i+1; j < N; ++j) 
+            {
+                // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
+                double dx = particles[i]->x - particles[j]->x;
+                double dy = particles[i]->y - particles[j]->y;
+
+                /* r_ij: the distance between particle i and j
+                * r_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
+                *reduce the redundant calculations of r + EPSILON
+                */
+                double r = sqrt((dx * dx) + (dy * dy)) + EPSILON;
+
+                // instead of using pow
+                double f = particles[j]->mass / (r * r * r);
+
+                F_x += f * dx;
+                F_y += f * dy;
+            }
 
             /* update the position of particle i
              * a_i^n = F_i^n / m_i
