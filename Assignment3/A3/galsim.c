@@ -90,6 +90,8 @@ void Print(Particle* p)
  */
 int main(int argc, char *argv[])
 {
+
+#pragma region ParseArguments
     // check if the number of arguments is correct 
     if (argc != 6) {
         printf("Usage: %s N filename nsteps delta_t graphics\n", argv[0]);
@@ -100,6 +102,7 @@ int main(int argc, char *argv[])
     int nsteps = atoi(argv[3]);
     double delta_t = atof(argv[4]);
     bool graphics = atoi(argv[5]);
+#pragma endregion
 
 #pragma region ReadFile
     FILE *file = fopen(filename, "rb");
@@ -130,6 +133,7 @@ int main(int argc, char *argv[])
     fclose(file);
 #pragma endregion
 
+#pragma region Simulation
     double G = 100.0 / N;
     int t = 0;
     do
@@ -213,8 +217,8 @@ int main(int argc, char *argv[])
         } while(i < N);
         ++t;
     } while (t < nsteps);
-    
-
+#pragma endregion
+#pragma region WriteFile
     // output result.gal as binary file format
     FILE *output = fopen("result.gal", "wb");
     if (output == NULL) 
@@ -235,6 +239,7 @@ int main(int argc, char *argv[])
 
     fclose(output);
 
+#pragma endregion
 
 #pragma region FreeMemory
     i = 0;
