@@ -191,13 +191,18 @@ int main(int argc, char *argv[])
              * u_i^n+1 = u_i^n + a_i^n * delta_t
              * x_i^n+1 = x_i^n + u_i^n+1 * delta_t
              */ 
-            F_x *= - G * particles[i]->mass;
-            F_y *= - G * particles[i]->mass;
-
-            double a_x = F_x / particles[i]->mass;
-            double a_y = F_y / particles[i]->mass;
-            particles[i]->v_x += a_x * delta_t;
-            particles[i]->v_y += a_y * delta_t;
+            
+            /* original calculate
+             * F_x *= - G * particles[i]->mass;
+             * F_y *= - G * particles[i]->mass;
+             * double a_x = F_x / particles[i]->mass;
+             * double a_y = F_y / particles[i]->mass;
+             * particles[i]->v_x += a_x * delta_t;
+             * particles[i]->v_y += a_y * delta_t;
+             * 
+             */
+            particles[i]->v_x += - G * F_x * delta_t;
+            particles[i]->v_y += - G * F_y * delta_t;
             ++i;
         } while (i < N);
         i = 0;
