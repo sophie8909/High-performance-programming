@@ -39,4 +39,14 @@ for CASE in "${TEST_CASES[@]}"; do
     echo "========================================="
 done
 
+FINAL_CASE="ellipse_N_03000"
+N=3000
+INPUT_FILE="${INPUT_DIR}/${FINAL_CASE}.gal"
+REF_FILE="${REF_DIR}/${FINAL_CASE}_after100steps.gal"
+echo "Running simulation for $FINAL_CASE (N=N)..."
+time $SIM_EXEC $N $INPUT_FILE $STEPS $DELTA_T $MODE
+echo "Comparing result with reference file..."
+$COMP_EXEC $N $OUTPUT_DIR $REF_FILE
+
+
 echo "All simulations completed!"

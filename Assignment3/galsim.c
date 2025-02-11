@@ -132,7 +132,6 @@ int main(int argc, char *argv[])
 
     double G = 100.0 / N;
     int t = 0;
-    
     do
     {
         i = 0;
