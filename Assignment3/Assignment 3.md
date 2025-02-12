@@ -47,7 +47,7 @@ FreeMemory: release all memory in the end.
 
 Algorithm implement in Simulation part. Following are pseudocode.
 
-```c
+```python
 for t in nsteps:
     for i in N:
         F = 0.0;
@@ -112,7 +112,10 @@ Figure 2: Compile with `-o3` version - real time performance
 | ellipse_N_01000 | 0m0.688s | 0m0.648s | 0m0.000s |
 | ellipse_N_02000 | 0m1.271s | 0m2.602s | 0m0.001s |
 
+In this version, same as last version, just add another compile flag. It didn't effect the runtime (< 0.01s). 
+
 #### Move `F()` into main
+
 | input data      | real     | user     | sys      |
 | --------------- | -------- | -------- | -------- |
 | ellipse_N_00010 | 0m0.008s | 0m0.002s | 0m0.000s |
@@ -121,7 +124,16 @@ Figure 2: Compile with `-o3` version - real time performance
 | ellipse_N_01000 | 0m0.671s | 0m0.631s | 0m0.000s |
 | ellipse_N_02000 | 0m1.169s | 0m2.516s | 0m0.010s |
 
+Initially,  I placed the code in `F()` for easy to modify. In this version, I moved it into `main` function to reduce function call. In the larger test case (N = 2000), this optimization reduced the execution time by 0.1s compared to before.
+
+Figure 3 looks similar to Figure 2. but the peak is slightly lower.
+
+![F()](C:\Users\Sophie\Desktop\High-performance-programming\Assignment3\report\F().png)
+
+Figure 3:  Move `F()` into main - real time performance
+
 #### Remove if ( i != j ) in loop
+
 | input data      | real     | user     | sys      |
 | --------------- | -------- | -------- | -------- |
 | ellipse_N_00010 | 0m0.008s | 0m0.001s | 0m0.000s |
@@ -130,7 +142,39 @@ Figure 2: Compile with `-o3` version - real time performance
 | ellipse_N_01000 | 0m0.377s | 0m0.342s | 0m0.009s |
 | ellipse_N_02000 | 0m1.487s | 0m1.406s | 0m0.000s |
 
+As shown in the pseudocode in *Algorithm*, the `for` loop originally used `if (i != j)` to skip the calculation for the particle itself. Since conditional checks inside loops can slow down execution, I modified the code to avoid using `if` statements inside the loop.
+
+The new version pseudocode is following: 
+
+```python
+for t in nsteps:
+    for i in N:
+        F = 0.0;
+        for j in range(0, i):
+            dx = particles[i]->x - particles[j]->x;
+            dy = particles[i]->y - particles[j]->y;
+            r = sqrt((dx * dx) + (dy * dy));
+            F += particles[j]->mass / (r * r * r);
+		for j in range(i+1, N):
+            dx = particles[i]->x - particles[j]->x;
+            dy = particles[i]->y - particles[j]->y;
+            r = sqrt((dx * dx) + (dy * dy));
+            F += particles[j]->mass / (r * r * r);
+		F *= -G * particles[i]->mass;
+		a = F / particles[i]->mass;
+        update paricles[i] velocity
+    for i in N:
+        update paricles[i] position
+```
+
+In **Figure 4**, the runtime for **"ellipse_N_01000"** shows a significant reduction, but the other cases did not change much. Notably, the runtime for "ellipse_N_02000" even increased.
+
+![Remove if ( i != j ) in loop](C:\Users\Sophie\Desktop\High-performance-programming\Assignment3\report\Remove if ( i != j ) in loop.png)
+
+Figure 4: Remove if ( i != j ) in loop - real time performance
+
 #### Change for to do-while
+
 | input data      | real     | user     | sys      |
 | --------------- | -------- | -------- | -------- |
 | ellipse_N_00010 | 0m0.008s | 0m0.001s | 0m0.000s |
@@ -138,6 +182,8 @@ Figure 2: Compile with `-o3` version - real time performance
 | ellipse_N_00500 | 0m0.102s | 0m0.090s | 0m0.000s |
 | ellipse_N_01000 | 0m0.383s | 0m0.357s | 0m0.000s |
 | ellipse_N_02000 | 0m1.499s | 0m1.408s | 0m0.010s |
+
+In this version, I changed most of the loops from `for` to `do-while`, but it did not improve performance.
 
 #### Move `Destroy()` into main
 
@@ -149,6 +195,8 @@ Figure 2: Compile with `-o3` version - real time performance
 | ellipse_N_01000 | 0m0.363s | 0m0.336s | 0m0.000s |
 | ellipse_N_02000 | 0m1.407s | 0m1.328s | 0m0.000s |
 
+Similar to *Move `F()` into main*, I moved `Destroy()` to `main`. It had a slight positive effect.
+
 #### Reduce useless calculation
 
 | input data      | real     | user     | sys      |
@@ -159,9 +207,46 @@ Figure 2: Compile with `-o3` version - real time performance
 | ellipse_N_01000 | 0m0.356s | 0m0.335s | 0m0.010s |
 | ellipse_N_02000 | 0m1.428s | 0m1.410s | 0m0.000s |
 
+Lastly, I combined some redundant calculations and used faster operators. However, the effect was still not significant.
+
+After modification, the new code is following: 
+
+```python
+for t in nsteps:
+    for i in N:
+        F = 0.0;
+        for j in range(0, i):
+            dx = particles[i]->x - particles[j]->x;
+            dy = particles[i]->y - particles[j]->y;
+            r = sqrt((dx * dx) + (dy * dy));
+            F += particles[j]->mass / (r * r * r);
+		for j in range(i+1, N):
+            dx = particles[i]->x - particles[j]->x;
+            dy = particles[i]->y - particles[j]->y;
+            r = sqrt((dx * dx) + (dy * dy));
+            F += particles[j]->mass / (r * r * r);
+        particles[i]->v += - G * F * delta_t;
+    for i in N:
+        update paricles[i] position
+```
+
+#### Discussion
+
+In conclusion, the most effective optimization was clearly compiling with `-O3`. Reducing conditional statements inside loops also had a noticeable impact. Reducing function calls showed some improvement in larger test cases. Other optimization strategies did not produce significant effects in this assignment.
+
+## Environment
+
+Run on Windows 11 wsl.
+
+CPU: AMD Ryzen 5 7535HS with Radeon Graphics 
 
 
 
 ## References
 
-- ChatGPT https://chatgpt.com/
+- ChatGPT: https://chatgpt.com/
+
+## Appendix
+
+- GitHub:  https://github.com/sophie8909/High-performance-programming
+
