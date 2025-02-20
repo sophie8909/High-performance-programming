@@ -17,7 +17,12 @@
  */
 typedef struct 
 {
-    double x, y, mass, v_x, v_y, brightness;
+    double* x;
+    double* y;
+    double* mass;
+    double* v_x;
+    double* v_y;
+    double* brightness;
 } Particle;
 
 /* (*Del) Create new particle
@@ -35,11 +40,6 @@ typedef struct
 //     return p;
 // }
 
-// print to terminal
-void Print(Particle* p) 
-{
-    printf("%lf\n%lf\n%lf\n%lf\n%lf\n%lf\n", p->x, p->y, p->mass, p->v_x, p->v_y, p->brightness);
-}
 
 # pragma endregion
 
@@ -112,20 +112,29 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    Particle** particles = (Particle**)malloc(N * sizeof(Particle*));
+    Particle particles;
+
+    // malloc for particles
+    particles.x = (double*)malloc(sizeof(double) * N);
+    particles.y = (double*)malloc(sizeof(double) * N);
+    particles.mass = (double*)malloc(sizeof(double) * N);
+    particles.v_x = (double*)malloc(sizeof(double) * N);
+    particles.v_y = (double*)malloc(sizeof(double) * N);
+    particles.brightness = (double*)malloc(sizeof(double) * N);
+
+
     for(int i = 0; i < N; ++i)
     {
         double data[6];
         size_t read_count = fread(data, sizeof(double), 6, file);
         // printf("Read: %lf %lf %lf %lf %lf %lf\n", data[0], data[1], data[2], data[3], data[4], data[5]);
         // particles[i] = Create(data[0], data[1], data[2], data[3], data[4], data[5]);
-        particles[i] = (Particle*)malloc(sizeof(Particle));
-        particles[i]->x = data[0];
-        particles[i]->y = data[1];
-        particles[i]->mass = data[2];
-        particles[i]->v_x = data[3];
-        particles[i]->v_y = data[4];
-        particles[i]->brightness = data[5];
+        particles.x[i] = data[0];
+        particles.y[i] = data[1];
+        particles.mass[i] = data[2];
+        particles.v_x[i] = data[3];
+        particles.v_y[i] = data[4];
+        particles.brightness[i] = data[5];
         // Print(particles[i]);
     }
     fclose(file);
@@ -150,8 +159,8 @@ int main(int argc, char *argv[])
             for (int j = 0; j < i; ++j) 
             {
                 // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
-                double dx = particles[i]->x - particles[j]->x;
-                double dy = particles[i]->y - particles[j]->y;
+                double dx = particles.x[i] - particles.x[j];
+                double dy = particles.y[i] - particles.y[j];
 
                 /* r_ij: the distance between particle i and j
                 * r_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
@@ -160,7 +169,7 @@ int main(int argc, char *argv[])
                 double r = sqrt((dx * dx) + (dy * dy)) + EPSILON;
 
                 // instead of using pow
-                double f = particles[j]->mass / (r * r * r);
+                double f = particles.mass[j] / (r * r * r);
 
                 F_x += f * dx;
                 F_y += f * dy;
@@ -170,10 +179,18 @@ int main(int argc, char *argv[])
             for (int j = i+1; j < N; ++j) 
             {
                 // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
-                double dx = particles[i]->x - particles[j]->x;
-                double dy = particles[i]->y - particles[j]->y;
+                double dx = particles.x[i] - particles.x[j];
+                double dy = particles.y[i] - particles.y[j];
+
+                /* r_ij: the distance between particle i and j
+                * r_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
+                *reduce the redundant calculations of r + EPSILON
+                */
                 double r = sqrt((dx * dx) + (dy * dy)) + EPSILON;
-                double f = particles[j]->mass / (r * r * r);
+
+                // instead of using pow
+                double f = particles.mass[j] / (r * r * r);
+
                 F_x += f * dx;
                 F_y += f * dy;
             }
@@ -193,13 +210,13 @@ int main(int argc, char *argv[])
              * particles[i]->v_y += a_y * delta_t;
              * 
              */
-            particles[i]->v_x += - G * F_x * delta_t;
-            particles[i]->v_y += - G * F_y * delta_t;
+            particles.v_x[i] += - G * F_x * delta_t;
+            particles.v_y[i] += - G * F_y * delta_t;
         }
         for (int i = 0; i < N; ++i)
         {
-            particles[i]->x += particles[i]->v_x * delta_t;
-            particles[i]->y += particles[i]->v_y * delta_t;
+            particles.x[i] += particles.v_x[i] * delta_t;
+            particles.y[i] += particles.v_y[i] * delta_t;
         }
         
     }
@@ -215,12 +232,12 @@ int main(int argc, char *argv[])
 
     for (int i = 0; i < N; ++i)
     {
-        fwrite(&particles[i]->x, sizeof(double), 1, output);
-        fwrite(&particles[i]->y, sizeof(double), 1, output);
-        fwrite(&particles[i]->mass, sizeof(double), 1, output);
-        fwrite(&particles[i]->v_x, sizeof(double), 1, output);
-        fwrite(&particles[i]->v_y, sizeof(double), 1, output);
-        fwrite(&particles[i]->brightness, sizeof(double), 1, output);
+        fwrite(&particles.x[i], sizeof(double), 1, output);
+        fwrite(&particles.y[i], sizeof(double), 1, output);
+        fwrite(&particles.mass[i], sizeof(double), 1, output);
+        fwrite(&particles.v_x[i], sizeof(double), 1, output);
+        fwrite(&particles.v_y[i], sizeof(double), 1, output);
+        fwrite(&particles.brightness[i], sizeof(double), 1, output);
     }
 
     fclose(output);
@@ -230,10 +247,13 @@ int main(int argc, char *argv[])
 #pragma region FreeMemory
     for (int i = 0; i < N; ++i)
     {
-        free(particles[i]);
+        free(particles.x);
+        free(particles.y);
+        free(particles.mass);
+        free(particles.v_x);
+        free(particles.v_y);
+        free(particles.brightness);
     }
-
-    free(particles);
 #pragma endregion
 
     return 0;
