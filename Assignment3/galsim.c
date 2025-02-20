@@ -142,8 +142,15 @@ int main(int argc, char *argv[])
 
 #pragma region Simulation
     double G = 100.0 / N;
+    // Allocate force arrays outside the time step loop
+    double *F_x = (double*)malloc(sizeof(double) * N);
+    double *F_y = (double*)malloc(sizeof(double) * N);
     for (int t = 0; t < nsteps; ++t)
     {
+        // Initialize force arrays to zero at the start of each time step
+        memset(F_x, 0, sizeof(double) * N);
+        memset(F_y, 0, sizeof(double) * N);
+
         for (int i = 0; i < N; ++i)
         {
             /* calculate the force exerted on particle i by other N-1 particles */ 
@@ -153,29 +160,7 @@ int main(int argc, char *argv[])
             /* F_i = -G * m_i * Σ m_j / (r_ij+epsilon)^3 * r_ij^
              * epsilon = 10^-3
              */
-            double F_x = 0.0;
-            double F_y = 0.0;
             
-            for (int j = 0; j < i; ++j) 
-            {
-                // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
-                double dx = particles.x[i] - particles.x[j];
-                double dy = particles.y[i] - particles.y[j];
-
-                /* r_ij: the distance between particle i and j
-                * r_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
-                *reduce the redundant calculations of r + EPSILON
-                */
-                double r = sqrt((dx * dx) + (dy * dy)) + EPSILON;
-
-                // instead of using pow
-                double f = particles.mass[j] / (r * r * r);
-
-                F_x += f * dx;
-                F_y += f * dy;
-            }
-
-            // Same as above, but for the rest of the particles
             for (int j = i+1; j < N; ++j) 
             {
                 // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
@@ -187,39 +172,28 @@ int main(int argc, char *argv[])
                 *reduce the redundant calculations of r + EPSILON
                 */
                 double r = sqrt((dx * dx) + (dy * dy)) + EPSILON;
+                double inv_r3 = 1.0 / (r * r * r);
 
                 // instead of using pow
-                double f = particles.mass[j] / (r * r * r);
+                double f_i = particles.mass[j] * inv_r3;
+                double f_j = particles.mass[i] * inv_r3;
 
-                F_x += f * dx;
-                F_y += f * dy;
+                F_x[i] += f_i * dx;
+                F_y[i] += f_i * dy;
+                F_x[j] -= f_j * dx;
+                F_y[j] -= f_j * dy;
             }
 
-            /* update the position of particle i
-             * a_i^n = F_i^n / m_i
-             * u_i^n+1 = u_i^n + a_i^n * delta_t
-             * x_i^n+1 = x_i^n + u_i^n+1 * delta_t
-             */ 
-            
-            /* original calculate
-             * F_x *= - G * particles[i]->mass;
-             * F_y *= - G * particles[i]->mass;
-             * double a_x = F_x / particles[i]->mass;
-             * double a_y = F_y / particles[i]->mass;
-             * particles[i]->v_x += a_x * delta_t;
-             * particles[i]->v_y += a_y * delta_t;
-             * 
-             */
-            particles.v_x[i] += - G * F_x * delta_t;
-            particles.v_y[i] += - G * F_y * delta_t;
-        }
-        for (int i = 0; i < N; ++i)
-        {
+            particles.v_x[i] += - G * F_x[i] * delta_t;
+            particles.v_y[i] += - G * F_y[i] * delta_t;
             particles.x[i] += particles.v_x[i] * delta_t;
             particles.y[i] += particles.v_y[i] * delta_t;
         }
-        
     }
+
+    // Free allocated memory for force arrays
+    free(F_x);
+    free(F_y);
 #pragma endregion
 #pragma region WriteFile
     // output result.gal as binary file format
