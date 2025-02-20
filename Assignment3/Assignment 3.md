@@ -230,9 +230,49 @@ for t in nsteps:
         update paricles[i] position
 ```
 
+### Modify Array
+
+| input data      | real     | user     | sys      |
+| --------------- | -------- | -------- | -------- |
+| ellipse_N_00010 | 0m0.007s | 0m0.001s | 0m0.000s |
+| ellipse_N_00100 | 0m0.010s | 0m0.004s | 0m0.000s |
+| ellipse_N_00500 | 0m0.095s | 0m0.090s | 0m0.000s |
+| ellipse_N_01000 | 0m0.341s | 0m0.340s | 0m0.000s |
+| ellipse_N_02000 | 0m1.328s | 0m1.351s | 0m0.000s |
+| ellipse_N_03000 | 0m1.494s | 0m1.520s | 0m0.000s |
+
+```c
+typedef struct 
+{
+    double* x;
+    double* y;
+    double* mass;
+    double* v_x;
+    double* v_y;
+    double* brightness;
+} Particle;
+```
+
+Modify the structure for better vectorization. The execution time was significantly reduced, especially in the case of **"ellipse_N_03000"**, where the **real time** decreased from **0m3.118s** to **0m1.494s**.
+
+### Reduce the number of computations
+
+| input data      | real     | user     | sys      |
+| --------------- | -------- | -------- | -------- |
+| ellipse_N_00010 | 0m0.007s | 0m0.001s | 0m0.000s |
+| ellipse_N_00100 | 0m0.011s | 0m0.005s | 0m0.000s |
+| ellipse_N_00500 | 0m0.104s | 0m0.100s | 0m0.000s |
+| ellipse_N_01000 | 0m0.388s | 0m0.386s | 0m0.010s |
+| ellipse_N_02000 | 0m1.527s | 0m1.578s | 0m0.000s |
+| ellipse_N_03000 | 0m1.703s | 0m1.769s | 0m0.000s |
+
+Compared to the previous version, where velocity and position updates were performed in a separate loop after force calculations, this version integrates the updates directly within the force computation loop.
+
+The execution time slightly increased, especially for larger cases (**N = 2000, 3000**).
+
 #### Discussion
 
-In conclusion, the most effective optimization was clearly compiling with `-O3`. Reducing conditional statements inside loops also had a noticeable impact. Reducing function calls showed some improvement in larger test cases. Other optimization strategies did not produce significant effects in this assignment.
+In conclusion, the most effective optimization was clearly compiling with `-O3`. Also structure effect a lot. Reducing conditional statements inside loops also had a noticeable impact. Reducing function calls showed some improvement in larger test cases. Other optimization strategies did not produce significant effects in this assignment.
 
 ## Environment
 
