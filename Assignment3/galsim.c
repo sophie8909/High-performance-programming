@@ -245,15 +245,13 @@ int main(int argc, char *argv[])
 #pragma endregion
 
 #pragma region FreeMemory
-    for (int i = 0; i < N; ++i)
-    {
-        free(particles.x);
-        free(particles.y);
-        free(particles.mass);
-        free(particles.v_x);
-        free(particles.v_y);
-        free(particles.brightness);
-    }
+    
+    free(particles.x);
+    free(particles.y);
+    free(particles.mass);
+    free(particles.v_x);
+    free(particles.v_y);
+    free(particles.brightness);
 #pragma endregion
 
     return 0;
