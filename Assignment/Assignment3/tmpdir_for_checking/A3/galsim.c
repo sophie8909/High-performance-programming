@@ -6,7 +6,7 @@
 // using define instead of variable
 #define EPSILON 0.001
 
-#pragma region Particle
+// #pragma region Particle
 /* Structure to store the state of a particle
  * x: position x
  * y: position y
@@ -41,9 +41,9 @@ typedef struct
 // }
 
 
-# pragma endregion
+// # pragma endregion
 
-#pragma region Movation
+// #pragma region Movation
 /* (*Del - directly calculate in main) Calculate the force exerted on particle i by other N-1 particles
  * N: number of particles
  * particles: array of pointers to particles
@@ -78,7 +78,7 @@ typedef struct
 //     return -G * particles[i]->mass * F;
 // }
 
-#pragma endregion
+// #pragma endregion
 
 
 /* read 5 input arguments from the command line 
@@ -91,7 +91,7 @@ typedef struct
 int main(int argc, char *argv[])
 {
 
-#pragma region ParseArguments
+// #pragma region ParseArguments
     // check if the number of arguments is correct 
     if (argc != 6) {
         printf("Usage: %s N filename nsteps delta_t graphics\n", argv[0]);
@@ -102,9 +102,9 @@ int main(int argc, char *argv[])
     int nsteps = atoi(argv[3]);
     double delta_t = atof(argv[4]);
     bool graphics = atoi(argv[5]);
-#pragma endregion
+// #pragma endregion
 
-#pragma region ReadFile
+// #pragma region ReadFile
     FILE *file = fopen(filename, "rb");
     if (file == NULL) 
     {
@@ -138,9 +138,9 @@ int main(int argc, char *argv[])
         // Print(particles[i]);
     }
     fclose(file);
-#pragma endregion
+// #pragma endregion
 
-#pragma region Simulation
+// #pragma region Simulation
     double G = 100.0 / N;
     // Allocate force arrays outside the time step loop
     double *F_x = (double*)malloc(sizeof(double) * N);
@@ -160,7 +160,8 @@ int main(int argc, char *argv[])
             /* F_i = -G * m_i * Σ m_j / (r_ij+epsilon)^3 * r_ij^
              * epsilon = 10^-3
              */
-            
+            double F_i = 0.0;
+            double F_j = 0.0;
             for (int j = i+1; j < N; ++j) 
             {
                 // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
@@ -178,12 +179,13 @@ int main(int argc, char *argv[])
                 double f_i = particles.mass[j] * inv_r3;
                 double f_j = particles.mass[i] * inv_r3;
 
-                F_x[i] += f_i * dx;
-                F_y[i] += f_i * dy;
+                F_i += f_i * dx;
+                F_j += f_i * dy;
                 F_x[j] -= f_j * dx;
                 F_y[j] -= f_j * dy;
             }
-
+            F_x[i] += F_i;
+            F_y[i] += F_j;
             particles.v_x[i] += - G * F_x[i] * delta_t;
             particles.v_y[i] += - G * F_y[i] * delta_t;
             particles.x[i] += particles.v_x[i] * delta_t;
@@ -194,8 +196,8 @@ int main(int argc, char *argv[])
     // Free allocated memory for force arrays
     free(F_x);
     free(F_y);
-#pragma endregion
-#pragma region WriteFile
+// #pragma endregion
+// #pragma region WriteFile
     // output result.gal as binary file format
     FILE *output = fopen("result.gal", "wb");
     if (output == NULL) 
@@ -216,9 +218,9 @@ int main(int argc, char *argv[])
 
     fclose(output);
 
-#pragma endregion
+// #pragma endregion
 
-#pragma region FreeMemory
+// #pragma region FreeMemory
     
     free(particles.x);
     free(particles.y);
@@ -226,7 +228,7 @@ int main(int argc, char *argv[])
     free(particles.v_x);
     free(particles.v_y);
     free(particles.brightness);
-#pragma endregion
+// #pragma endregion
 
     return 0;
 }

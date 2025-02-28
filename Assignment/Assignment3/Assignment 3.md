@@ -270,6 +270,19 @@ Compared to the previous version, where velocity and position updates were perfo
 
 The execution time slightly increased, especially for larger cases (**N = 2000, 3000**).
 
+## Vectorized
+
+| input data      | real     | user     | sys      |
+| --------------- | -------- | -------- | -------- |
+| ellipse_N_00010 | 0m0.009s | 0m0.002s | 0m0.000s |
+| ellipse_N_00100 | 0m0.007s | 0m0.002s | 0m0.000s |
+| ellipse_N_00500 | 0m0.031s | 0m0.025s | 0m0.001s |
+| ellipse_N_01000 | 0m0.095s | 0m0.090s | 0m0.000s |
+| ellipse_N_02000 | 0m0.340s | 0m0.353s | 0m0.000s |
+| ellipse_N_03000 | 0m0.387s | 0m0.391s | 0m0.011s |
+
+By introducing additional variables, modifications within the **for j** loop no longer directly affect `F_x[i]` and `F_y[i]`, allowing for **vectorization**. After **vectorization**, the execution time was significantly reduced, especially for larger test cases.
+
 #### Discussion
 
 In conclusion, the most effective optimization was clearly compiling with `-O3`. Also structure effect a lot. Reducing conditional statements inside loops also had a noticeable impact. Reducing function calls showed some improvement in larger test cases. Other optimization strategies did not produce significant effects in this assignment.
