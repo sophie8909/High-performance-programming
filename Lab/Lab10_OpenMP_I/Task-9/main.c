@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include "sort_funcs.h"
+#include <omp.h>
 
 static double get_wall_seconds() {
   struct timeval tv;
@@ -31,6 +32,13 @@ int main(int argc, char* argv[]) {
     printf("Error: (N < 1).\n");
     return -1;
   }
+  int nThreads;
+  printf("Number of threads: ");
+  if (scanf("%d", &nThreads) != 1) {
+    fprintf(stderr, "Error: Invalid input for number of threads\n");
+    return 1;
+}
+
   intType* list_to_sort = (intType*)malloc(N*sizeof(intType));
   // Fill list with random numbers
   int i;
@@ -43,7 +51,7 @@ int main(int argc, char* argv[]) {
 
   // Sort list
   double time1 = get_wall_seconds();
-  merge_sort(list_to_sort, N);
+  merge_sort(list_to_sort, N, nThreads);
   printf("Sorting list with length %d took %7.3f wall seconds.\n", N, get_wall_seconds()-time1);  
 
   int count7_again = count_values(list_to_sort, N, 7);
