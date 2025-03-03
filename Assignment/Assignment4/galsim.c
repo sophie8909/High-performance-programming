@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
 // #pragma region ParseArguments
     // check if the number of arguments is correct 
-    if (argc != 6) {
+    if (argc != 7) {
         printf("Usage: %s N filename nsteps delta_t graphics\n", argv[0]);
         return 1;
     }
