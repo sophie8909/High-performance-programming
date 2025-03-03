@@ -25,68 +25,15 @@ typedef struct
     double* brightness;
 } Particle;
 
-/* (*Del) Create new particle
- *
- */
-// Particle* Create(double x, double y, double mass, double v_x, double v_y, double brightness) 
-// {
-//     Particle* p = (Particle*)malloc(sizeof(Particle));
-//     p->x = x;
-//     p->y = y;
-//     p->mass = mass;
-//     p->v_x = v_x;
-//     p->v_y = v_y;
-//     p->brightness = brightness;
-//     return p;
-// }
 
 
-// # pragma endregion
-
-// #pragma region Movation
-/* (*Del - directly calculate in main) Calculate the force exerted on particle i by other N-1 particles
- * N: number of particles
- * particles: array of pointers to particles
- * i: index of the particle
- * G: gravitational constant
- */ 
-// double F(int N, Particle** particles, int i, double G) 
-// {
-//     /* F_i = -G * m_i * Σ m_j / (r_ij+epsilon)^3 * r_ij^
-//      * epsilon = 10^-3
-//     */
-//     double F = 0.0;
-//     for (int j = 0; j < N; j++) 
-//     {
-//         if (i != j) 
-//         {
-//             double dx = particles[i]->x - particles[j]->x;
-//             double dy = particles[i]->y - particles[j]->y;
-//             /* r_ij: the vector pointing from particle j to particle i
-//              * r_ij = (x_i − x_j)e_x + (y_i − y_j)e_y
-//              */ 
-//             double r = dx * particles[j]->e_x + dy * particles[j]->e_y;
-//             /* gamma_ij: the distance between particle i and j
-//              * gamma_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
-//              */
-//             double gamma = sqrt((dx * dx) + (dy * dy));
-//             // r_ij^ = r_ij / gamma_ij
-//             double gamma_epsilln = gamma + EPSILON;
-//             F += particles[j]->mass  * r / (gamma_epsilln * gamma_epsilln * gamma_epsilln);
-//         }
-//     }
-//     return -G * particles[i]->mass * F;
-// }
-
-// #pragma endregion
-
-
-/* read 5 input arguments from the command line 
+/* read 6 input arguments from the command line 
  * N: the number of stars/particles to simulate
  * filename: the filename of the file to read the initial configuration from
  * nsteps: the number of timesteps
  * delta_t: the timestep ∆t
  * graphics: 1 or 0 meaning graphics on/of
+ * n_threads: number od threads
  */
 int main(int argc, char *argv[])
 {
@@ -102,6 +49,7 @@ int main(int argc, char *argv[])
     int nsteps = atoi(argv[3]);
     double delta_t = atof(argv[4]);
     bool graphics = atoi(argv[5]);
+    int n_threads = atoi(argv[6]);
 // #pragma endregion
 
 // #pragma region ReadFile
