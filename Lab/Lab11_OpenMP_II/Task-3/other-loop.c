@@ -16,9 +16,11 @@ int main(int argc, char *argv[]) {
   double arr[M];
   double y = 1.0;
 
+ 
   {
 
     int i;
+    #pragma omp parallel for num_threads(6)
     for(i = 0; i < M; i++) {
       y *= 1.01;
       arr[i] = y * f(i);
