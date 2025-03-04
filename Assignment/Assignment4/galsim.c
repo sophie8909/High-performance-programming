@@ -45,6 +45,8 @@ void* CalculateForce(void* arg)
 {
     int start = ((ThreadData*)arg)->start;
     int end = ((ThreadData*)arg)->end;
+    double* local_F_x = (double*)calloc(N, sizeof(double));
+    double* local_F_y = (double*)calloc(N, sizeof(double));
     for (int i = start; i < end; ++i)
     {
         /* calculate the force exerted on particle i by other N-1 particles */ 
@@ -75,18 +77,22 @@ void* CalculateForce(void* arg)
 
             F_i += f_i * dx;
             F_j += f_i * dy;
-            pthread_mutex_lock(&lock);
-            particles.F_x[j] -= f_j * dx;
-            particles.F_y[j] -= f_j * dy;
-            pthread_mutex_unlock(&lock);
+            local_F_x[j] -= f_j * dx;
+            local_F_y[j] -= f_j * dy;
         }
-
-        pthread_mutex_lock(&lock);
-        particles.F_x[i] += F_i;
-        particles.F_y[i] += F_j;
-        pthread_mutex_unlock(&lock);
+        local_F_x[i] += F_i;
+        local_F_y[i] += F_j;
     }
-    
+    pthread_mutex_lock(&lock);
+    for (int i = start; i < end; ++i)
+    {
+        particles.F_x[i] = local_F_x[i];
+        particles.F_y[i] = local_F_y[i];
+    }
+    pthread_mutex_unlock(&lock);
+
+    free(local_F_x);
+    free(local_F_y);
     pthread_exit(NULL);
 }
 
