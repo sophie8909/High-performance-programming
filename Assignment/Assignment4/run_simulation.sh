@@ -8,7 +8,7 @@ COMP_EXEC="./compare_gal_files/compare_gal_files"
 STEPS=200
 DELTA_T=0.00001
 MODE=0
-NTHREADS=4
+NTHREADS=1
 
 # Define test cases
 TEST_CASES=(

@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
+#include <pthread.h>
 // using define instead of variable
 #define EPSILON 0.001
 
@@ -23,8 +24,71 @@ typedef struct
     double* v_x;
     double* v_y;
     double* brightness;
+    double* F_x;
+    double* F_y;
 } Particle;
 
+typedef struct
+{
+    int start;
+    int end;
+} ThreadData;
+
+
+int N;
+double G;
+double delta_t;
+Particle particles;
+pthread_mutex_t lock;
+
+void* CalculateForce(void* arg)
+{
+    int start = ((ThreadData*)arg)->start;
+    int end = ((ThreadData*)arg)->end;
+    for (int i = start; i < end; ++i)
+    {
+        /* calculate the force exerted on particle i by other N-1 particles */ 
+        
+        // double F_i = F(N, particles, i, G);
+        // 
+        /* F_i = -G * m_i * Σ m_j / (r_ij+epsilon)^3 * r_ij^
+            * epsilon = 10^-3
+            */
+        double F_i = 0.0;
+        double F_j = 0.0;
+        for (int j = i+1; j < N; ++j) 
+        {
+            // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
+            double dx = particles.x[i] - particles.x[j];
+            double dy = particles.y[i] - particles.y[j];
+
+            /* r_ij: the distance between particle i and j
+            * r_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
+            *reduce the redundant calculations of r + EPSILON
+            */
+            double r = sqrt((dx * dx) + (dy * dy)) + EPSILON;
+            double inv_r3 = 1.0 / (r * r * r);
+
+            // instead of using pow
+            double f_i = particles.mass[j] * inv_r3;
+            double f_j = particles.mass[i] * inv_r3;
+
+            F_i += f_i * dx;
+            F_j += f_i * dy;
+            pthread_mutex_lock(&lock);
+            particles.F_x[j] -= f_j * dx;
+            particles.F_y[j] -= f_j * dy;
+            pthread_mutex_unlock(&lock);
+        }
+
+        pthread_mutex_lock(&lock);
+        particles.F_x[i] += F_i;
+        particles.F_y[i] += F_j;
+        pthread_mutex_unlock(&lock);
+    }
+    
+    pthread_exit(NULL);
+}
 
 
 /* read 6 input arguments from the command line 
@@ -44,10 +108,10 @@ int main(int argc, char *argv[])
         printf("Usage: %s N filename nsteps delta_t graphics\n", argv[0]);
         return 1;
     }
-    int N = atoi(argv[1]);
+    N = atoi(argv[1]);
     char *filename = argv[2];
     int nsteps = atoi(argv[3]);
-    double delta_t = atof(argv[4]);
+    delta_t = atof(argv[4]);
     bool graphics = atoi(argv[5]);
     int n_threads = atoi(argv[6]);
 // #pragma endregion
@@ -60,7 +124,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    Particle particles;
+    
 
     // malloc for particles
     particles.x = (double*)malloc(sizeof(double) * N);
@@ -88,62 +152,68 @@ int main(int argc, char *argv[])
     fclose(file);
 // #pragma endregion
 
+    // pthread init
+    pthread_t threads[n_threads];
+    pthread_attr_t attr;
+    pthread_attr_init(&attr);
+    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+    ThreadData data[n_threads];
+    pthread_mutex_init(&lock, NULL);
+    
+    // split calculation area into n_threads
+    int batch_size = N * N * 0.5 / n_threads;
+    int linear_batch_size = N / n_threads;
+    int index = 0;
+    int area = 0;
+    for (int i = 0; i < n_threads; ++i)
+    {
+        // data[i].start = index;
+        // area = 0;
+        // while (area < batch_size && index < N)
+        // {
+        //     area += N - index;
+        //     index++;
+        // }
+        // data[i].end = index;
+        data[i].start = i * linear_batch_size;
+        data[i].end = (i + 1) * linear_batch_size;
+    }
+    data[n_threads - 1].end = N;
+    for (int i = 0; i < n_threads; ++i)
+    {
+        printf("Thread %d: %d %d\n", i, data[i].start, data[i].end);
+    }
+
+
 // #pragma region Simulation
-    double G = 100.0 / N;
+    G = 100.0 / N;
     // Allocate force arrays outside the time step loop
-    double *F_x = (double*)malloc(sizeof(double) * N);
-    double *F_y = (double*)malloc(sizeof(double) * N);
+    particles.F_x = (double*)malloc(sizeof(double) * N);
+    particles.F_y = (double*)malloc(sizeof(double) * N);
     for (int t = 0; t < nsteps; ++t)
     {
         // Initialize force arrays to zero at the start of each time step
-        memset(F_x, 0, sizeof(double) * N);
-        memset(F_y, 0, sizeof(double) * N);
+        memset(particles.F_x, 0, sizeof(double) * N);
+        memset(particles.F_y, 0, sizeof(double) * N);
 
+        // using pthread to parallelize the loop
+        for (int j = 0; j < n_threads; ++j)
+        {
+            pthread_create(&threads[j], &attr, CalculateForce, (void*)&data[j]);
+        }
+        for (int j = 0; j < n_threads; ++j)
+        {
+            pthread_join(threads[j], NULL);
+        }
         for (int i = 0; i < N; ++i)
         {
-            /* calculate the force exerted on particle i by other N-1 particles */ 
-            
-            // double F_i = F(N, particles, i, G);
-            // 
-            /* F_i = -G * m_i * Σ m_j / (r_ij+epsilon)^3 * r_ij^
-             * epsilon = 10^-3
-             */
-            double F_i = 0.0;
-            double F_j = 0.0;
-            for (int j = i+1; j < N; ++j) 
-            {
-                // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
-                double dx = particles.x[i] - particles.x[j];
-                double dy = particles.y[i] - particles.y[j];
-
-                /* r_ij: the distance between particle i and j
-                * r_ij^2 = (x_i − x_j)^2 + (y_i − y_j)^2
-                *reduce the redundant calculations of r + EPSILON
-                */
-                double r = sqrt((dx * dx) + (dy * dy)) + EPSILON;
-                double inv_r3 = 1.0 / (r * r * r);
-
-                // instead of using pow
-                double f_i = particles.mass[j] * inv_r3;
-                double f_j = particles.mass[i] * inv_r3;
-
-                F_i += f_i * dx;
-                F_j += f_i * dy;
-                F_x[j] -= f_j * dx;
-                F_y[j] -= f_j * dy;
-            }
-            F_x[i] += F_i;
-            F_y[i] += F_j;
-            particles.v_x[i] += - G * F_x[i] * delta_t;
-            particles.v_y[i] += - G * F_y[i] * delta_t;
+            particles.v_x[i] += - G * particles.F_x[i] * delta_t;
+            particles.v_y[i] += - G * particles.F_y[i] * delta_t;
             particles.x[i] += particles.v_x[i] * delta_t;
             particles.y[i] += particles.v_y[i] * delta_t;
         }
     }
 
-    // Free allocated memory for force arrays
-    free(F_x);
-    free(F_y);
 // #pragma endregion
 // #pragma region WriteFile
     // output result.gal as binary file format
@@ -176,6 +246,11 @@ int main(int argc, char *argv[])
     free(particles.v_x);
     free(particles.v_y);
     free(particles.brightness);
+    free(particles.F_x);
+    free(particles.F_y);
+    pthread_attr_destroy(&attr);
+    pthread_mutex_destroy(&lock);
+
 // #pragma endregion
 
     return 0;
