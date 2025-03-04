@@ -47,6 +47,7 @@ void* CalculateForce(void* arg)
     int end = ((ThreadData*)arg)->end;
     double* local_F_x = (double*)calloc(N, sizeof(double));
     double* local_F_y = (double*)calloc(N, sizeof(double));
+
     for (int i = start; i < end; ++i)
     {
         /* calculate the force exerted on particle i by other N-1 particles */ 
@@ -80,19 +81,22 @@ void* CalculateForce(void* arg)
             local_F_x[j] -= f_j * dx;
             local_F_y[j] -= f_j * dy;
         }
+
         local_F_x[i] += F_i;
         local_F_y[i] += F_j;
+
     }
     pthread_mutex_lock(&lock);
-    for (int i = start; i < end; ++i)
+    for (int i = 0; i < N; ++i)
     {
-        particles.F_x[i] = local_F_x[i];
-        particles.F_y[i] = local_F_y[i];
+        particles.F_x[i] += local_F_x[i];
+        particles.F_y[i] += local_F_y[i];
     }
     pthread_mutex_unlock(&lock);
 
     free(local_F_x);
     free(local_F_y);
+    
     pthread_exit(NULL);
 }
 
@@ -185,10 +189,10 @@ int main(int argc, char *argv[])
         data[i].end = (i + 1) * linear_batch_size;
     }
     data[n_threads - 1].end = N;
-    // for (int i = 0; i < n_threads; ++i)
-    // {
-    //     printf("Thread %d: %d %d\n", i, data[i].start, data[i].end);
-    // }
+    for (int i = 0; i < n_threads; ++i)
+    {
+        printf("Thread %d: %d %d\n", i, data[i].start, data[i].end);
+    }
 
 
 // #pragma region Simulation
@@ -199,8 +203,8 @@ int main(int argc, char *argv[])
     for (int t = 0; t < nsteps; ++t)
     {
         // Initialize force arrays to zero at the start of each time step
-        memset(particles.F_x, 0, sizeof(double) * N);
-        memset(particles.F_y, 0, sizeof(double) * N);
+        memset(particles.F_x, 0.0, sizeof(double) * N);
+        memset(particles.F_y, 0.0, sizeof(double) * N);
 
         // using pthread to parallelize the loop
         for (int j = 0; j < n_threads; ++j)

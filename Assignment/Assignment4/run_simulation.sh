@@ -8,7 +8,7 @@ COMP_EXEC="./compare_gal_files/compare_gal_files"
 STEPS=200
 DELTA_T=0.00001
 MODE=0
-NTHREADS=1
+NTHREADS=2
 
 # Define test cases
 TEST_CASES=(
@@ -23,6 +23,8 @@ TEST_CASES=(
 INPUT_DIR="./input_data"
 OUTPUT_DIR="./result.gal"
 REF_DIR="./ref_output_data"
+
+echo "Running simulations with nthreads=$NTHREADS..."
 
 for CASE in "${TEST_CASES[@]}"; do
     INPUT_FILE="${INPUT_DIR}/${CASE}.gal"
@@ -44,7 +46,7 @@ FINAL_CASE="ellipse_N_03000"
 N=3000
 INPUT_FILE="${INPUT_DIR}/${FINAL_CASE}.gal"
 REF_FILE="${REF_DIR}/${FINAL_CASE}_after100steps.gal"
-echo "Running simulation for $FINAL_CASE (N=N)..."
+echo "Running simulation for $FINAL_CASE (N=100)..."
 time $SIM_EXEC $N $INPUT_FILE 100 $DELTA_T $MODE $NTHREADS
 echo "Comparing result with reference file..."
 $COMP_EXEC $N $OUTPUT_DIR $REF_FILE

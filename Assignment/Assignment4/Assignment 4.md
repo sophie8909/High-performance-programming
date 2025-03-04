@@ -230,7 +230,7 @@ for t in nsteps:
         update paricles[i] position
 ```
 
-### Modify Array
+#### Modify Array
 
 | input data      | real     | user     | sys      |
 | --------------- | -------- | -------- | -------- |
@@ -255,7 +255,7 @@ typedef struct
 
 Modify the structure for better vectorization. The execution time was significantly reduced, especially in the case of **"ellipse_N_03000"**, where the **real time** decreased from **0m3.118s** to **0m1.494s**.
 
-### Reduce the number of computations
+#### Reduce the number of computations
 
 | input data      | real     | user     | sys      |
 | --------------- | -------- | -------- | -------- |
@@ -270,7 +270,7 @@ Compared to the previous version, where velocity and position updates were perfo
 
 The execution time slightly increased, especially for larger cases (**N = 2000, 3000**).
 
-## Vectorized
+#### Vectorized
 
 | input data      | real     | user     | sys      |
 | --------------- | -------- | -------- | -------- |
@@ -283,7 +283,33 @@ The execution time slightly increased, especially for larger cases (**N = 2000, 
 
 By introducing additional variables, modifications within the **for j** loop no longer directly affect `F_x[i]` and `F_y[i]`, allowing for **vectorization**. After **vectorization**, the execution time was significantly reduced, especially for larger test cases.
 
-#### Discussion
+### Use Pthreads to parallelize
+
+#### Original pthreads with mutex in for
+
+| input data      | real     | user     | sys      |
+| :-------------- | -------- | -------- | -------- |
+| ellipse_N_00010 | 0m0.023s | 0m0.000s | 0m0.010s |
+| ellipse_N_00100 | 0m0.033s | 0m0.005s | 0m0.005s |
+| ellipse_N_00500 | 0m0.265s | 0m0.029s | 0m0.003s |
+| ellipse_N_01000 | 0m0.916s | 0m0.219s | 0m0.003s |
+| ellipse_N_02000 | 0m3.664s | 0m2.787s | 0m0.008s |
+| ellipse_N_03000 | 0m3.965s | 0m3.654s | 0m0.019s |
+
+The table above shows the results for a **single-threaded run**. Due to **thread control overhead**, the parallel version runs **almost 10 times slower** than the serial version.
+
+
+
+
+
+#### Work-load balance
+
+
+
+### Use OpenMP to parallelize
+
+
+## Discussion
 
 In conclusion, the most effective optimization was clearly compiling with `-O3`. Also structure effect a lot. Reducing conditional statements inside loops also had a noticeable impact. Reducing function calls showed some improvement in larger test cases. Other optimization strategies did not produce significant effects in this assignment.
 
