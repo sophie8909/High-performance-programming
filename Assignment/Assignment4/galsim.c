@@ -172,27 +172,27 @@ int main(int argc, char *argv[])
     
     // split calculation area into n_threads
     int batch_size = N * N * 0.5 / n_threads;
-    int linear_batch_size = N / n_threads;
+    // int linear_batch_size = N / n_threads;
     int index = 0;
     int area = 0;
     for (int i = 0; i < n_threads; ++i)
     {
-        // data[i].start = index;
-        // area = 0;
-        // while (area < batch_size && index < N)
-        // {
-        //     area += N - index;
-        //     index++;
-        // }
-        // data[i].end = index;
-        data[i].start = i * linear_batch_size;
-        data[i].end = (i + 1) * linear_batch_size;
+        data[i].start = index;
+        area = 0;
+        while (area < batch_size && index < N)
+        {
+            area += N - index;
+            index++;
+        }
+        data[i].end = index;
+        // data[i].start = i * linear_batch_size;
+        // data[i].end = (i + 1) * linear_batch_size;
     }
     data[n_threads - 1].end = N;
-    for (int i = 0; i < n_threads; ++i)
-    {
-        printf("Thread %d: %d %d\n", i, data[i].start, data[i].end);
-    }
+    // for (int i = 0; i < n_threads; ++i)
+    // {
+    //     printf("Thread %d: %d %d\n", i, data[i].start, data[i].end);
+    // }
 
 
 // #pragma region Simulation
