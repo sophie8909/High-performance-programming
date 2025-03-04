@@ -179,10 +179,10 @@ int main(int argc, char *argv[])
         data[i].end = (i + 1) * linear_batch_size;
     }
     data[n_threads - 1].end = N;
-    for (int i = 0; i < n_threads; ++i)
-    {
-        printf("Thread %d: %d %d\n", i, data[i].start, data[i].end);
-    }
+    // for (int i = 0; i < n_threads; ++i)
+    // {
+    //     printf("Thread %d: %d %d\n", i, data[i].start, data[i].end);
+    // }
 
 
 // #pragma region Simulation
