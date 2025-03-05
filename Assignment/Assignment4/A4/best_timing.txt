@@ -1,2 +1,3 @@
-0m0.387s
+0m0.332s
+0m0.226s
 AMD Ryzen 5 7535HS with Radeon Graphics 

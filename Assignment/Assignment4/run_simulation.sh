@@ -8,8 +8,7 @@ COMP_EXEC="./compare_gal_files/compare_gal_files"
 STEPS=200
 DELTA_T=0.00001
 MODE=0
-NTHREADS=8
-
+NTHREADS=12
 # Define test cases
 TEST_CASES=(
     "ellipse_N_00010"
