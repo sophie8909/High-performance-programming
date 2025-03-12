@@ -7,22 +7,22 @@
 uint8_t base;
 uint8_t side_length;
 
-void print_sudoku(uint8_t **board, uint8_t side_length)
+void print_sudoku(uint8_t *board, uint8_t side_length)
 {
     printf("Sudoku Board:\n");
     for (int i = 0; i < side_length; i++)
     {
         for (int j = 0; j < side_length; j++)
         {
-            printf("%3u ", board[i][j]);
+            printf("%3u ", board[i * side_length + j]);
         }
         printf("\n");
     }
 }
 
-bool duplicate_number_in_row(uint8_t **board, uint8_t x)
+bool duplicate_number_in_row(uint8_t *board, uint8_t x)
 {
-    uint8_t *row = board[x];
+    uint8_t *row = board + x * side_length;
     for (int i = 0; i < side_length; i++)
     {
         if (row[i] == 0)
@@ -38,24 +38,24 @@ bool duplicate_number_in_row(uint8_t **board, uint8_t x)
     return false;
 }
 
-bool duplicate_number_in_column(uint8_t **board, uint8_t y)
+bool duplicate_number_in_column(uint8_t *board, uint8_t y)
 {
     for (int i = 0; i < side_length; i++)
     {
-        if (board[i][y] == 0)
+        if (board[i * side_length + y] == 0)
             continue;
         for (int j = i + 1; j < side_length; j++)
         {
-            if (board[j][y] == 0)
+            if (board[j * side_length + y] == 0)
                 continue;
-            if (board[i][y] == board[j][y])
+            if (board[i * side_length + y] == board[j * side_length + y])
                 return true;
         }
     }
     return false;
 }
 
-bool duplicate_number_in_box(uint8_t **board, uint8_t x, uint8_t y)
+bool duplicate_number_in_box(uint8_t *board, uint8_t x, uint8_t y)
 {
     uint8_t box_x = x / base;
     uint8_t box_y = y / base;
@@ -67,15 +67,15 @@ bool duplicate_number_in_box(uint8_t **board, uint8_t x, uint8_t y)
     {
         for (int j = start_y; j < end_y; ++j)
         {
-            if (board[i][j] == 0)
+            if (board[i * side_length + j] == 0)
                 continue;
             for (int k = i; k < end_x; ++k)
             {
                 for (int l = j; l < end_y; ++l)
                 {
-                    if (board[k][l] == 0)
+                    if (board[k * side_length + l] == 0)
                         continue;
-                    if (board[i][j] == board[k][l] && i != k && j != l)
+                    if (board[i * side_length + j] == board[k * side_length + l] && i != k && j != l)
                         return true;
                 }
             }
@@ -85,7 +85,7 @@ bool duplicate_number_in_box(uint8_t **board, uint8_t x, uint8_t y)
 }
 
 
-bool validate_board(uint8_t **board, uint8_t x, uint8_t y)
+bool validate_board(uint8_t *board, uint8_t x, uint8_t y)
 {
     if (duplicate_number_in_row(board, x))
         return false;
@@ -96,7 +96,7 @@ bool validate_board(uint8_t **board, uint8_t x, uint8_t y)
     return true;
 }
 
-bool solve(uint8_t **board, int *unassign_ind, int n_unassign)
+bool solve(uint8_t *board, int *unassign_ind, int n_unassign)
 {
     // no more empty position, solution found
     if (n_unassign == 0)
@@ -109,7 +109,7 @@ bool solve(uint8_t **board, int *unassign_ind, int n_unassign)
     for (int val = 1; val <= side_length; ++val)
     {
         // set guess
-        board[x][y] = val;
+        board[x * side_length + y] = val;
         // printf("Guessing %u\n", val);
         if (validate_board(board, x, y))
         {
@@ -119,7 +119,7 @@ bool solve(uint8_t **board, int *unassign_ind, int n_unassign)
         }
     }
     // no solution found, backtrack
-    board[x][y] = 0;
+    board[x * side_length + y] = 0;
     return false;
 }
 
@@ -156,24 +156,14 @@ int main(int argc, char *argv[])
     printf("Base: %u, Side length: %u\n", base, side_length);
 
     
-    uint8_t **board = (uint8_t **)malloc(side_length * sizeof(uint8_t *));
-    for (int i = 0; i < side_length; ++i)
-    {
-        board[i] = (uint8_t *)malloc(side_length * sizeof(uint8_t));
-    }
+    uint8_t *board = (uint8_t*)malloc(side_length * side_length * sizeof(uint8_t)); 
     if (board == NULL)
     {
         printf("Memory allocation failed.\n");
         fclose(file);
         return 1;
     }
-    for (int i = 0; i < side_length; ++i)
-    {
-        for (int j = 0; j < side_length; ++j)
-        {
-            fread(&board[i][j], sizeof(uint8_t), 1, file);
-        }
-    }
+    fread(board, sizeof(uint8_t), side_length * side_length, file);
 
     fclose(file);
 
@@ -189,7 +179,7 @@ int main(int argc, char *argv[])
     {
         for (int j = 0; j < side_length; ++j)
         {
-            if (board[i][j] == 0)
+            if (board[i * side_length + j] == 0)
             {
                 unassign_ind[n_unassign] = i * side_length + j;
                 n_unassign++;
