@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
-
+#include <omp.h>
 
 uint8_t base;
 uint8_t side_length;
@@ -87,13 +87,26 @@ bool duplicate_number_in_box(uint8_t *board, uint8_t x, uint8_t y)
 
 bool validate_board(uint8_t *board, uint8_t x, uint8_t y)
 {
-    if (duplicate_number_in_row(board, x))
-        return false;
-    if (duplicate_number_in_column(board, y))
-        return false;
-    if (duplicate_number_in_box(board, x, y))
-        return false;
-    return true;
+    bool is_valid_row = false;
+    bool is_valid_column = false;
+    bool is_valid_box = false;
+    // parallelize the three checks
+    #pragma omp parallel sections
+    {
+        #pragma omp section
+        {
+            is_valid_row = !duplicate_number_in_row(board, x);
+        }
+        #pragma omp section
+        {
+            is_valid_column = !duplicate_number_in_column(board, y);
+        }
+        #pragma omp section
+        {
+            is_valid_box = !duplicate_number_in_box(board, x, y);
+        }
+    }
+    return is_valid_row && is_valid_column && is_valid_box;
 }
 
 bool solve(uint8_t *board, int *unassign_ind, int n_unassign)
