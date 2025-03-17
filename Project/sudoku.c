@@ -6,6 +6,7 @@
 
 uint8_t base;
 uint8_t side_length;
+int n_thread;
 
 void print_sudoku(uint8_t *board, uint8_t side_length)
 {
@@ -87,26 +88,13 @@ bool duplicate_number_in_box(uint8_t *board, uint8_t x, uint8_t y)
 
 bool validate_board(uint8_t *board, uint8_t x, uint8_t y)
 {
-    bool is_valid_row = false;
-    bool is_valid_column = false;
-    bool is_valid_box = false;
-    // parallelize the three checks
-    #pragma omp parallel sections
-    {
-        #pragma omp section
-        {
-            is_valid_row = !duplicate_number_in_row(board, x);
-        }
-        #pragma omp section
-        {
-            is_valid_column = !duplicate_number_in_column(board, y);
-        }
-        #pragma omp section
-        {
-            is_valid_box = !duplicate_number_in_box(board, x, y);
-        }
-    }
-    return is_valid_row && is_valid_column && is_valid_box;
+    if (duplicate_number_in_row(board, x))
+        return false;
+    if (duplicate_number_in_column(board, y))
+        return false;
+    if (duplicate_number_in_box(board, x, y))
+        return false;
+    return true;
 }
 
 bool solve(uint8_t *board, int *unassign_ind, int n_unassign)
@@ -119,6 +107,7 @@ bool solve(uint8_t *board, int *unassign_ind, int n_unassign)
     uint8_t y = unassign_ind[n_unassign - 1] % side_length;
     // printf("Solving cell (%u, %u)\n", x, y);
 
+    
     for (int val = 1; val <= side_length; ++val)
     {
         // set guess
@@ -139,9 +128,9 @@ bool solve(uint8_t *board, int *unassign_ind, int n_unassign)
 
 int main(int argc, char *argv[])
 {
-    if (argc != 2)
+    if (argc != 3)
     {
-        printf("Usage: sudoku <file>\n");
+        printf("Usage: sudoku <file> <n_thread>\n");
         return 1;
     }
 
@@ -152,6 +141,8 @@ int main(int argc, char *argv[])
         return 1;
     }
 
+    n_thread = atoi(argv[2]);
+    
     // read base 和 side_length
     if (fread(&base, sizeof(uint8_t), 1, file) != 1)
     {
@@ -208,7 +199,36 @@ int main(int argc, char *argv[])
     // }
 
     // solve sudoku
-    solve(board, unassign_ind, n_unassign);
+    // only parallel first level
+    #pragma omp parallel for num_threads(n_thread)
+    for (int val = 1; val <= side_length; ++val)
+    {
+        int x = unassign_ind[n_unassign - 1] / side_length;
+        int y = unassign_ind[n_unassign - 1] % side_length;
+
+        uint8_t board_copy[side_length * side_length]; 
+        for (int i = 0; i < side_length * side_length; i++)
+        {
+            board_copy[i] = board[i];
+        }
+        // set guess
+        board_copy[x * side_length + y] = val;
+        
+        if (validate_board(board, x, y))
+        {
+            bool solved = solve(board_copy, unassign_ind, n_unassign - 1);
+            if (solved)
+            {
+                #pragma omp critical
+                {
+                    for (int i = 0; i < side_length * side_length; i++)
+                    {
+                        board[i] = board_copy[i];
+                    }
+                }
+            }
+        }
+    }
 
 
     printf("solution:\n");

@@ -10,6 +10,7 @@ TEST_CASES=(
     "board_64x64"
 )
 
+NTHREADS=4
 
 # Input and output directories
 INPUT_DIR="input"
@@ -24,7 +25,7 @@ for CASE in "${TEST_CASES[@]}"; do
     N=$(echo "$CASE" | grep -o '[0-9]\+')
 
     echo "Running simulation for $CASE (N=$N)..."
-    time $SIM_EXEC $INPUT_FILE 
+    time $SIM_EXEC $INPUT_FILE $NTHREADS
 
     echo "========================================="
 done
