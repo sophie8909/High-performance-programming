@@ -7,7 +7,7 @@
 uint8_t base;
 uint8_t side_length;
 int n_thread;
-
+bool is_solved = false;
 void print_sudoku(uint8_t *board, uint8_t side_length)
 {
     printf("Sudoku Board:\n");
@@ -102,6 +102,8 @@ bool solve(uint8_t *board, int *unassign_ind, int n_unassign)
     // no more empty position, solution found
     if (n_unassign == 0)
         return true;
+    if (is_solved)
+        return false;
 
     uint8_t x = unassign_ind[n_unassign - 1] / side_length;
     uint8_t y = unassign_ind[n_unassign - 1] % side_length;
@@ -117,7 +119,13 @@ bool solve(uint8_t *board, int *unassign_ind, int n_unassign)
         {
             bool solved = solve(board, unassign_ind, n_unassign - 1);
             if (solved)
+            {
+                #pragma omp critical
+                {
+                    is_solved = true;
+                }
                 return true;
+            }
         }
     }
     // no solution found, backtrack
@@ -203,6 +211,8 @@ int main(int argc, char *argv[])
     #pragma omp parallel for num_threads(n_thread)
     for (int val = 1; val <= side_length; ++val)
     {
+        if (is_solved)
+            continue;
         int x = unassign_ind[n_unassign - 1] / side_length;
         int y = unassign_ind[n_unassign - 1] % side_length;
 
@@ -213,7 +223,7 @@ int main(int argc, char *argv[])
         }
         // set guess
         board_copy[x * side_length + y] = val;
-        
+
         if (validate_board(board, x, y))
         {
             bool solved = solve(board_copy, unassign_ind, n_unassign - 1);
@@ -221,6 +231,7 @@ int main(int argc, char *argv[])
             {
                 #pragma omp critical
                 {
+                    is_solved = true;
                     for (int i = 0; i < side_length * side_length; i++)
                     {
                         board[i] = board_copy[i];
