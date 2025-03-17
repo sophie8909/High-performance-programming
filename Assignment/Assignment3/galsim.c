@@ -3,7 +3,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
-#include <omp.h>
 // using define instead of variable
 #define EPSILON 0.001
 
@@ -94,7 +93,7 @@ int main(int argc, char *argv[])
 
 // #pragma region ParseArguments
     // check if the number of arguments is correct 
-    if (argc != 7) {
+    if (argc != 6) {
         printf("Usage: %s N filename nsteps delta_t graphics\n", argv[0]);
         return 1;
     }
@@ -103,7 +102,6 @@ int main(int argc, char *argv[])
     int nsteps = atoi(argv[3]);
     double delta_t = atof(argv[4]);
     bool graphics = atoi(argv[5]);
-    int n_threads = atoi(argv[6]);
 // #pragma endregion
 
 // #pragma region ReadFile
@@ -153,7 +151,6 @@ int main(int argc, char *argv[])
         memset(F_x, 0, sizeof(double) * N);
         memset(F_y, 0, sizeof(double) * N);
 
-        #pragma omp parallel for schedule(dynamic,8) reduction(+:F_x[:N]) reduction(+:F_y[:N]) num_threads(n_threads)
         for (int i = 0; i < N; ++i)
         {
             /* calculate the force exerted on particle i by other N-1 particles */ 
