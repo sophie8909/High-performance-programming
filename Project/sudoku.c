@@ -175,7 +175,12 @@ int main(int argc, char *argv[])
         fclose(file);
         return 1;
     }
-    fread(board, sizeof(uint8_t), side_length * side_length, file);
+    if(fread(board, sizeof(uint8_t), side_length * side_length, file) != side_length * side_length)
+    {
+        printf("Failed to read board.\n");
+        fclose(file);
+        return 1;
+    }
 
     fclose(file);
 
@@ -208,38 +213,44 @@ int main(int argc, char *argv[])
 
     // solve sudoku
     // only parallel first level
-    #pragma omp parallel for num_threads(n_thread)
-    for (int val = 1; val <= side_length; ++val)
+    #pragma omp parallel num_threads(n_thread)
     {
-        if (is_solved)
-            continue;
-        int x = unassign_ind[n_unassign - 1] / side_length;
-        int y = unassign_ind[n_unassign - 1] % side_length;
-
-        uint8_t board_copy[side_length * side_length]; 
-        for (int i = 0; i < side_length * side_length; i++)
+        #pragma omp single
         {
-            board_copy[i] = board[i];
-        }
-        // set guess
-        board_copy[x * side_length + y] = val;
-
-        if (validate_board(board, x, y))
-        {
-            bool solved = solve(board_copy, unassign_ind, n_unassign - 1);
-            if (solved)
+            for (int val = 1; val <= side_length; ++val)
             {
-                #pragma omp critical
+                if (is_solved)
+                    continue;
+                int x = unassign_ind[n_unassign - 1] / side_length;
+                int y = unassign_ind[n_unassign - 1] % side_length;
+
+                uint8_t board_copy[side_length * side_length]; 
+                for (int i = 0; i < side_length * side_length; i++)
                 {
-                    is_solved = true;
-                    for (int i = 0; i < side_length * side_length; i++)
+                    board_copy[i] = board[i];
+                }
+                // set guess
+                board_copy[x * side_length + y] = val;
+                #pragma omp task firstprivate(board_copy)
+                if (validate_board(board, x, y))
+                {
+                    bool solved = solve(board_copy, unassign_ind, n_unassign - 1);
+                    if (solved)
                     {
-                        board[i] = board_copy[i];
+                        #pragma omp critical
+                        {
+                            is_solved = true;
+                            for (int i = 0; i < side_length * side_length; i++)
+                            {
+                                board[i] = board_copy[i];
+                            }
+                        }
                     }
                 }
             }
         }
     }
+    
 
 
     printf("solution:\n");

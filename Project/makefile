@@ -1,6 +1,6 @@
 CC = gcc
 LD = gcc
-CFLAGS = -Wall -fopenmp #-O3 -ffast-math -march=native -fopt-info-vec  
+CFLAGS = -Wall -fopenmp -O3 #-ffast-math -march=native -fopt-info-vec  
 LDFLAGS = -fopenmp
 RM = /bin/rm -f
 OBJS = sudoku.o
