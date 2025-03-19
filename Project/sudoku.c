@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
-// #include <omp.h>
+#include <omp.h>
 #include <string.h>
 
 uint8_t base;
@@ -169,6 +169,8 @@ bool solve(uint8_t *board, uint64_t* board_row, uint64_t* board_col, uint64_t* b
     
     for (int val = 1; val <= side_length; ++val)
     {
+        if (is_solved)
+            continue;
         // set guess
         board[x * side_length + y] = val;
         // printf("Guessing %u\n", val);
@@ -188,7 +190,6 @@ bool solve(uint8_t *board, uint64_t* board_row, uint64_t* board_col, uint64_t* b
                 {
                     is_solved = true;
                 }
-                return true;
             }
             board_row[x] &= ~mask;
             board_col[y] &= ~mask;
@@ -332,8 +333,52 @@ int main(int argc, char *argv[])
     //     printf("(%u, %u)\n", unassign_ind[i] / side_length, unassign_ind[i] % side_length);
     // }
 
+    uint8_t board[side_length * side_length];
+    for (int i = 0; i < side_length * side_length; i++)
+    {
+        board[i] = solved_board[i];
+    }
     // solve sudoku
-    solve(solved_board, board_row, board_col, board_box, unassign_ind, n_unassign);
+    #pragma omp parallel num_threads(n_thread)
+    {
+        #pragma omp single
+        {
+            int x = unassign_ind[n_unassign - 1] / side_length;
+            int y = unassign_ind[n_unassign - 1] % side_length;
+            for (int val = 1; val <= side_length; ++val)
+            {
+                if (is_solved)
+                    continue;
+                // set guess
+                board[x * side_length + y] = val;
+                // printf("Guessing %u\n", val);
+                #pragma omp task firstprivate(board, board_row, board_col, board_box, unassign_ind, n_unassign, x, y) shared(is_solved)
+                if (validate_board_bitmap(board, board_row, board_col, board_box, x, y, val))
+                {
+                    uint64_t mask = 1ULL << (uint64_t)(val-1);
+                    // update bitmap
+                    board_row[x] |= mask;
+                    board_col[y] |= mask;
+                    board_box[(x / base) * base + y / base] |= mask;
+                    // solve next cell
+                    // printf("Solving cell (%u, %u)\n", x, y);
+                    bool solved = solve(board, board_row, board_col, board_box, unassign_ind, n_unassign - 1);
+                    if (solved)
+                    {
+                        // #pragma omp critical
+                        {
+                            is_solved = true;
+                        }
+                    }
+                    board_row[x] &= ~mask;
+                    board_col[y] &= ~mask;
+                    board_box[(x / base) * base + y / base] &= ~mask;
+                }
+            }
+        }
+    }
+
+
 
 
     printf("solution:\n");
