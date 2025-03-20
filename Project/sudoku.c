@@ -347,6 +347,7 @@ int main(int argc, char *argv[])
             int y = unassign_ind[n_unassign - 1] % side_length;
             for (int val = 1; val <= side_length; ++val)
             {
+                
                 if (is_solved)
                     continue;
                 // set guess
