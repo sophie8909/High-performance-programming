@@ -127,7 +127,7 @@ bool validate_board(uint8_t *board, uint8_t x, uint8_t y)
     return true;
 }
 
-bool validate_board_bitmap(uint8_t* board, uint64_t* board_row, uint64_t* board_col, uint64_t* board_box, uint8_t x, uint8_t y, uint8_t val)
+bool validate_board_bitmask(uint8_t* board, uint64_t* board_row, uint64_t* board_col, uint64_t* board_box, uint8_t x, uint8_t y, uint8_t val)
 {
     // printf("Validating cell (%u, %u) with value %u\n", x, y, val);
     uint64_t mask = 1ULL << (uint64_t)(val-1);
@@ -174,10 +174,10 @@ bool solve(uint8_t *board, uint64_t* board_row, uint64_t* board_col, uint64_t* b
         // set guess
         board[x * side_length + y] = val;
         // printf("Guessing %u\n", val);
-        if (validate_board_bitmap(board, board_row, board_col, board_box, x, y, val))
+        if (validate_board_bitmask(board, board_row, board_col, board_box, x, y, val))
         {
             uint64_t mask = 1ULL << (uint64_t)(val-1);
-            // update bitmap
+            // update bitmask
             board_row[x] |= mask;
             board_col[y] |= mask;
             board_box[(x / base) * base + y / base] |= mask;
@@ -353,26 +353,37 @@ int main(int argc, char *argv[])
                 board[x * side_length + y] = val;
                 // printf("Guessing %u\n", val);
                 #pragma omp task firstprivate(board, board_row, board_col, board_box, unassign_ind, n_unassign, x, y) shared(is_solved)
-                if (validate_board_bitmap(board, board_row, board_col, board_box, x, y, val))
                 {
-                    uint64_t mask = 1ULL << (uint64_t)(val-1);
-                    // update bitmap
-                    board_row[x] |= mask;
-                    board_col[y] |= mask;
-                    board_box[(x / base) * base + y / base] |= mask;
-                    // solve next cell
-                    // printf("Solving cell (%u, %u)\n", x, y);
-                    bool solved = solve(board, board_row, board_col, board_box, unassign_ind, n_unassign - 1);
-                    if (solved)
+                    uint8_t board_copy[side_length * side_length];
+                    uint64_t board_row_copy[side_length];
+                    uint64_t board_col_copy[side_length];
+                    uint64_t board_box_copy[side_length];
+                    memcpy(board_copy, board, side_length * side_length * sizeof(uint8_t));
+                    memcpy(board_row_copy, board_row, side_length * sizeof(uint64_t));
+                    memcpy(board_col_copy, board_col, side_length * sizeof(uint64_t));
+                    memcpy(board_box_copy, board_box, side_length * sizeof(uint64_t));
+
+                    if (validate_board_bitmask(board_copy, board_row_copy, board_col_copy, board_box_copy, x, y, val))
                     {
-                        // #pragma omp critical
+                        uint64_t mask = 1ULL << (uint64_t)(val-1);
+                        // update bitmask
+                        board_row_copy[x] |= mask;
+                        board_col_copy[y] |= mask;
+                        board_box_copy[(x / base) * base + y / base] |= mask;
+                        // solve next cell
+                        // printf("Solving cell (%u, %u)\n", x, y);
+                        bool solved = solve(board_copy, board_row_copy, board_col_copy, board_box_copy, unassign_ind, n_unassign - 1);
+                        if (solved)
                         {
-                            is_solved = true;
+                            // #pragma omp critical
+                            {
+                                is_solved = true;
+                            }
                         }
+                        board_row_copy[x] &= ~mask;
+                        board_col_copy[y] &= ~mask;
+                        board_box_copy[(x / base) * base + y / base] &= ~mask;
                     }
-                    board_row[x] &= ~mask;
-                    board_col[y] &= ~mask;
-                    board_box[(x / base) * base + y / base] &= ~mask;
                 }
             }
         }
