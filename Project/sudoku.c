@@ -341,7 +341,7 @@ int main(int argc, char *argv[])
     // solve sudoku
     #pragma omp parallel num_threads(n_thread)
     {
-        #pragma omp single
+        #pragma omp single nowait
         {
             int x = unassign_ind[n_unassign - 1] / side_length;
             int y = unassign_ind[n_unassign - 1] % side_length;
