@@ -10,13 +10,16 @@ TEST_CASES=(
     "board_64x64"
 )
 
-NTHREADS=4
+NTHREADS=12
 
 # Input and output directories
 INPUT_DIR="input"
-SIM_EXEC="./sudoku"
+# SIM_EXEC="./normal_parallel"
+# SIM_EXEC="./bitmask_parallel"
+SIM_EXEC="./bitmask"
 
-echo "Running simulations with nthreads=$NTHREADS..."
+
+echo "Running $SIM_EXEC simulations with nthreads=$NTHREADS..."
 
 for CASE in "${TEST_CASES[@]}"; do
     INPUT_FILE="${INPUT_DIR}/${CASE}.dat"

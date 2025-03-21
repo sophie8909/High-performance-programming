@@ -1,18 +1,22 @@
 CC = gcc
 LD = gcc
 CFLAGS = -Wall -O3 -fopenmp  #-ffast-math -march=native -fopt-info-vec  
-LDFLAGS = -fopenmp
 RM = /bin/rm -f
-OBJS = sudoku.o
-EXECUTABLE = sudoku
+EXECUTABLE = normal_parallel bitmask_parallel bitmask normal
 
 all:$(EXECUTABLE)
 
-$(EXECUTABLE): $(OBJS)
-	$(LD) $(LDFLAGS) $(OBJS) -o $(EXECUTABLE)
+normal_parallel: normal_parallel.c
+	$(CC) $(CFLAGS) -o normal_parallel normal_parallel.c
 
-$(OBJS): sudoku.c
-	$(CC) $(CFLAGS) -c sudoku.c 
+bitmask_parallel: bitmask_parallel.c
+	$(CC) $(CFLAGS) -o bitmask_parallel bitmask_parallel.c
+
+bitmask: bitmask.c
+	$(CC) $(CFLAGS) -o bitmask bitmask.c
+
+normal: normal.c
+	$(CC) $(CFLAGS) -o normal normal.c
 
 clean:
 	$(RM) $(EXECUTABLE) $(OBJS)
