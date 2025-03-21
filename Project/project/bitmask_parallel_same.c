@@ -1,14 +1,21 @@
+/**
+ * version: bitmask parallel with sme parallelism level as normal_parallel.c
+**/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <omp.h>
+#include <string.h>
 
 uint8_t base;
 uint8_t side_length;
 int n_thread;
 bool is_solved = false;
 uint8_t *solved_board;
+
+
 void print_sudoku(uint8_t *board, uint8_t side_length)
 {
     printf("Sudoku Board:\n");
@@ -126,13 +133,29 @@ bool validate_board(uint8_t *board, uint8_t x, uint8_t y)
     return true;
 }
 
-
-
-bool solve(uint8_t *board, int *unassign_ind, int n_unassign)
+bool validate_board_bitmask(uint8_t* board, uint64_t* board_row, uint64_t* board_col, uint64_t* board_box, uint8_t x, uint8_t y, uint8_t val)
 {
+    // printf("Validating cell (%u, %u) with value %u\n", x, y, val);
+    uint64_t mask = 1ULL << (uint64_t)(val-1);
+    if ((board_row[x] & mask) != 0)
+        return false;
+    if ((board_col[y] & mask) != 0)
+        return false;
+    if ((board_box[(x / base) * base + y / base] & mask) != 0)
+        return false;
+
+    // printf("Cell (%u, %u) with value %u is valid\n", x, y, val);
+    return true;
+}
+
+void solve(uint8_t *board, uint64_t* board_row, uint64_t* board_col, uint64_t* board_box, int *unassign_ind, int n_unassign)
+{
+    if (is_solved)
+        return;
     // no more empty position, solution found
     if (n_unassign == 0)
     {
+        // printf("solution found in thread %d\n", omp_get_thread_num());]
         #pragma omp critical
         {
             is_solved = true;
@@ -141,10 +164,8 @@ bool solve(uint8_t *board, int *unassign_ind, int n_unassign)
                 solved_board[i] = board[i];
             }
         }
-        return true;
+        return;
     }
-    if (is_solved)
-        return false;
 
     uint8_t x = unassign_ind[n_unassign - 1] / side_length;
     uint8_t y = unassign_ind[n_unassign - 1] % side_length;
@@ -153,25 +174,20 @@ bool solve(uint8_t *board, int *unassign_ind, int n_unassign)
     
     for (int val = 1; val <= side_length; ++val)
     {
+        if (is_solved)
+            continue;
         // set guess
         board[x * side_length + y] = val;
         // printf("Guessing %u\n", val);
         if (validate_board(board, x, y))
         {
-            bool solved = solve(board, unassign_ind, n_unassign - 1);
-            if (solved)
-            {
-                #pragma omp critical
-                {
-                    is_solved = true;
-                }
-                return true;
-            }
+            solve(board, board_row, board_col, board_box, unassign_ind, n_unassign - 1);
+            
         }
     }
     // no solution found, backtrack
     board[x * side_length + y] = 0;
-    return false;
+    return;
 }
 
 
@@ -245,6 +261,60 @@ int main(int argc, char *argv[])
         }
     }
 
+    /* set init bit map */
+    // row
+    uint64_t board_row[side_length];
+    memset(board_row, 0, side_length * sizeof(uint64_t));
+
+    for (int i = 0; i < side_length; ++i)
+    {
+        for (int j = 0; j < side_length; ++j)
+        {
+            if (solved_board[i * side_length + j] != 0)
+            {
+                board_row[i] |= 1ULL << (solved_board[i * side_length + j] - 1);
+            }
+        }
+    }
+
+    // column
+    uint64_t board_col[side_length];
+    memset(board_col, 0, side_length * sizeof(uint64_t));
+    for (int i = 0; i < side_length; ++i)
+    {
+        for (int j = 0; j < side_length; ++j)
+        {
+            if (solved_board[j * side_length + i] != 0)
+            {
+                board_col[i] |= 1ULL << (solved_board[j * side_length + i] - 1);
+            }
+        }
+    }
+
+    // box
+    uint64_t board_box[side_length];
+    memset(board_box, 0, side_length * sizeof(uint64_t));
+    for (int base_x = 0; base_x < base; ++base_x)
+    {
+        for (int base_y = 0; base_y < base; ++base_y)
+        {
+            for (int i = 0; i < base; ++i)
+            {
+                for (int j = 0; j < base; ++j)
+                {
+                    int x = base_x * base + i;
+                    int y = base_y * base + j;
+                    if (solved_board[x * side_length + y] != 0)
+                    {
+                        board_box[base_x * base + base_y] |= 1ULL << (solved_board[x * side_length + y] - 1);
+                    }
+                }
+            }
+        }
+    }
+
+
+
     // printf("Number of unassigned cells: %u\n", n_unassign);
     // printf("Unassigned cells:\n");
     // for (int i = 0; i < n_unassign; ++i)
@@ -252,8 +322,12 @@ int main(int argc, char *argv[])
     //     printf("(%u, %u)\n", unassign_ind[i] / side_length, unassign_ind[i] % side_length);
     // }
 
+    uint8_t board[side_length * side_length];
+    for (int i = 0; i < side_length * side_length; i++)
+    {
+        board[i] = solved_board[i];
+    }
     // solve sudoku
-    // only parallel first level
     #pragma omp parallel num_threads(n_thread)
     {
         #pragma omp single nowait
@@ -266,35 +340,41 @@ int main(int argc, char *argv[])
                 int y = unassign_ind[n_unassign - 1] % side_length;
 
                 uint8_t board_copy[side_length * side_length]; 
-                for (int i = 0; i < side_length * side_length; i++)
+                uint64_t board_row_copy[side_length];
+                uint64_t board_col_copy[side_length];
+                uint64_t board_box_copy[side_length];
+                memcpy(board_copy, board, side_length * side_length * sizeof(uint8_t));
+                memcpy(board_row_copy, board_row, side_length * sizeof(uint64_t));
+                memcpy(board_col_copy, board_col, side_length * sizeof(uint64_t));
+                memcpy(board_box_copy, board_box, side_length * sizeof(uint64_t));
+                #pragma omp task firstprivate(board_copy, board_row_copy, board_col_copy, board_box_copy, unassign_ind, n_unassign, x, y) shared(is_solved)
                 {
-                    board_copy[i] = solved_board[i];
-                }
-                // set guess
-                board_copy[x * side_length + y] = val;
-                #pragma omp task firstprivate(board_copy) shared(is_solved)
-                {
-                    if (validate_board(board_copy, x, y))
+                    if (validate_board_bitmask(board_copy, board_row_copy, board_col_copy, board_box_copy, x, y, val))
                     {
-                        bool solved = solve(board_copy, unassign_ind, n_unassign - 1);
-                        if (solved)
-                        {
-                            #pragma omp critical
-                            {
-                                is_solved = true;
-                            }
-                        }
+                        uint64_t mask = 1ULL << (uint64_t)(val-1);
+                        // update bitmask
+                        board_row_copy[x] |= mask;
+                        board_col_copy[y] |= mask;
+                        board_box_copy[(x / base) * base + y / base] |= mask;
+                        // solve next cell
+                        // printf("Solving cell (%u, %u)\n", x, y);
+                        solve(board_copy, board_row_copy, board_col_copy, board_box_copy, unassign_ind, n_unassign - 1);
+                        board_row_copy[x] &= ~mask;
+                        board_col_copy[y] &= ~mask;
+                        board_box_copy[(x / base) * base + y / base] &= ~mask;
                     }
                 }
             }
         }
     }
-    
+
+
 
 
     printf("solution:\n");
     print_sudoku(solved_board, side_length);
 
     free(solved_board);
+    free(unassign_ind);
     return 0;
 }

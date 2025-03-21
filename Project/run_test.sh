@@ -15,8 +15,11 @@ NTHREADS=12
 # Input and output directories
 INPUT_DIR="input"
 # SIM_EXEC="./normal_parallel"
+SIM_EXEC="./normal"
 # SIM_EXEC="./bitmask_parallel"
-SIM_EXEC="./bitmask"
+# SIM_EXEC="./bitmask"
+# SIM_EXEC="./bitmask_parallel_same"
+
 
 
 echo "Running $SIM_EXEC simulations with nthreads=$NTHREADS..."
@@ -28,7 +31,7 @@ for CASE in "${TEST_CASES[@]}"; do
     N=$(echo "$CASE" | grep -o '[0-9]\+')
 
     echo "Running simulation for $CASE (N=$N)..."
-    time $SIM_EXEC $INPUT_FILE $NTHREADS
+    time $SIM_EXEC $INPUT_FILE #$NTHREADS
 
     echo "========================================="
 done
