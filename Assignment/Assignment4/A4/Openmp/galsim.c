@@ -153,6 +153,7 @@ int main(int argc, char *argv[])
         memset(F_x, 0, sizeof(double) * N);
         memset(F_y, 0, sizeof(double) * N);
 
+        #pragma omp parallel for schedule(dynamic,8) num_threads(n_threads)  reduction(+:F_x[:N]) reduction(+:F_y[:N]) 
         for (int i = 0; i < N; ++i)
         {
             /* calculate the force exerted on particle i by other N-1 particles */ 
@@ -164,7 +165,6 @@ int main(int argc, char *argv[])
             */
             double F_i = 0.0;
             double F_j = 0.0;
-            #pragma omp parallel for schedule(dynamic,8) num_threads(n_threads)  reduction(+:F_x[:N]) reduction(+:F_y[:N]) reduction(+:F_i) reduction(+:F_j)
             for (int j = i+1; j < N; ++j) 
             {
                 // reduce the redundant calculations of "particles[i]->x - particles[j]->x" and "particles[i]->y - particles[j]->y"
@@ -189,6 +189,9 @@ int main(int argc, char *argv[])
             }
             F_x[i] += F_i;
             F_y[i] += F_j;
+        }
+        for (int i = 0; i < N; ++i)
+        {
             particles.v_x[i] += - G * F_x[i] * delta_t;
             particles.v_y[i] += - G * F_y[i] * delta_t;
             particles.x[i] += particles.v_x[i] * delta_t;

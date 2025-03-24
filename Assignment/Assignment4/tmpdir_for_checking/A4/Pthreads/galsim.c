@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <math.h>
-#include <omp.h>
+#include <pthread.h>
 // using define instead of variable
 #define EPSILON 0.001
 
@@ -39,9 +39,12 @@ int N;
 double G;
 double delta_t;
 Particle particles;
+pthread_mutex_t lock;
 
-void CalculateForce(int start, int end)
+void* CalculateForce(void* arg)
 {
+    int start = ((ThreadData*)arg)->start;
+    int end = ((ThreadData*)arg)->end;
     double* local_F_x = (double*)calloc(N, sizeof(double));
     double* local_F_y = (double*)calloc(N, sizeof(double));
 
@@ -83,19 +86,18 @@ void CalculateForce(int start, int end)
         local_F_y[i] += F_j;
 
     }
-    #pragma omp critical
+    pthread_mutex_lock(&lock);
+    for (int i = 0; i < N; ++i)
     {
-        for (int i = 0; i < N; ++i)
-        {
-            particles.F_x[i] += local_F_x[i];
-            particles.F_y[i] += local_F_y[i];
-        }
+        particles.F_x[i] += local_F_x[i];
+        particles.F_y[i] += local_F_y[i];
     }
-
+    pthread_mutex_unlock(&lock);
 
     free(local_F_x);
     free(local_F_y);
     
+    pthread_exit(NULL);
 }
 
 
@@ -160,8 +162,13 @@ int main(int argc, char *argv[])
     fclose(file);
 // #pragma endregion
 
-    // pthread initialization
-    ThreadData *data = (ThreadData*)malloc(sizeof(ThreadData) * n_threads);
+    // pthread init
+    pthread_t threads[n_threads];
+    pthread_attr_t attr;
+    pthread_attr_init(&attr);
+    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_JOINABLE);
+    ThreadData data[n_threads];
+    pthread_mutex_init(&lock, NULL);
     
     // split calculation area into n_threads
     int batch_size = N * N * 0.5 / n_threads;
@@ -199,13 +206,15 @@ int main(int argc, char *argv[])
         memset(particles.F_x, 0.0, sizeof(double) * N);
         memset(particles.F_y, 0.0, sizeof(double) * N);
 
-        // using OpenMP to parallelize the loop
-        #pragma omp parallel for num_threads(n_threads) 
+        // using pthread to parallelize the loop
         for (int j = 0; j < n_threads; ++j)
         {
-            CalculateForce(data[j].start, data[j].end);
+            pthread_create(&threads[j], &attr, CalculateForce, (void*)&data[j]);
         }
-        
+        for (int j = 0; j < n_threads; ++j)
+        {
+            pthread_join(threads[j], NULL);
+        }
         for (int i = 0; i < N; ++i)
         {
             particles.v_x[i] += - G * particles.F_x[i] * delta_t;
@@ -249,6 +258,8 @@ int main(int argc, char *argv[])
     free(particles.brightness);
     free(particles.F_x);
     free(particles.F_y);
+    pthread_attr_destroy(&attr);
+    pthread_mutex_destroy(&lock);
 
 // #pragma endregion
 

@@ -1,6 +1,6 @@
 CC = gcc
 LD = gcc
-CFLAGS = -O3 -ffast-math -march=native -fopt-info-vec -Wall -fopenmp
+CFLAGS = -O3 -ffast-math -march=native -fopt-info-vec -Wall
 LDFLAGS =  -fopenmp
 RM = /bin/rm -f
 OBJS = galsim.o
